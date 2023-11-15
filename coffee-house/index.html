@@ -9,7 +9,7 @@
 <body>
     <div class="home">
         <header class="header">
-            <div class="wrapper">
+            <div class="wrapper header__wrapper">
                 <div class="header-menu">
                     <div class="header__logo">
                         <a href="/" class="header__logo-link">
@@ -59,7 +59,44 @@
                 </div>
             </div>
         </header>
-
+        <div class="wrapper">
+            <div class="favorite-coffee">
+                <h2>Choose your favorite coffee</h2>
+                <div class="slider">
+                    <div class="slider_container">
+                        <button class="slider__button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path class="arrows_button" d="M18.5 12H6M6 12L12 6M6 12L12 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
+                             </svg>
+                        </button>
+                        <div class="row__slider">
+                            <div class="slide slide-1">
+                                <div class="slide__content">
+                                    <div class="img__slide-1"></div>
+                                    <div class="description__side">
+                                        <h3>S’mores Frappuccino</h3>
+                                        <p>This new drink takes an espresso and 
+                                        mixes it with brown sugar and cinnamon 
+                                        before being topped with oat milk.</p>
+                                        <h3>$5.50</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="slider__button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path class="arrows_button" d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="slider__controls">
+                        <span class="slider__controls__elem controls__elem-checked"></span>
+                        <span class="slider__controls__elem"></span>
+                        <span class="slider__controls__elem"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
 </body>
