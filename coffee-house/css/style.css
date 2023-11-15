@@ -243,7 +243,7 @@ table {
     color: var(--text-dark, #403F3D);
   }
 
-  .favorite-coffee {
+  .container {
     display: flex;
     max-width: 1360px;
     flex-direction: column;
@@ -369,3 +369,59 @@ table {
   .controls__elem-checked {
     background: var(--border-dark, #665F55);
   }
+
+  .about__imgbox {
+    display: flex;
+    max-width: 1360px;
+    align-items: flex-start;
+    gap: 40px;
+    align-self: stretch;
+  }
+
+  .about__imgbox__column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .imgbox__column-1-1, .imgbox__column-2-2 {
+    width: 660px;
+    height: 590px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .imgbox__column-1-2, .imgbox__column-2-1 {
+    width: 660px;
+    height: 430px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .imgbox__column-1-1 img,
+  .imgbox__column-1-2 img,
+  .imgbox__column-2-1 img,
+  .imgbox__column-2-2 img {
+    scale: 1;
+    transition: scale 1s;
+  }
+
+  .imgbox__column-1-1 img:hover,
+  .imgbox__column-1-2 img:hover,
+  .imgbox__column-2-1 img:hover,
+  .imgbox__column-2-2 img:hover {
+    scale:0.92;
+  }
+
+
+ 
+  
