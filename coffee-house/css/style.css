@@ -493,6 +493,65 @@ table {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .contacts__container {
+    display: flex;
+    max-width: 1360px;
+    padding: 100px;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
     align-self: stretch;
+    border-radius: 40px;
+    background: var(--background-container, #665F55);
+  }
+
+  .contacts__container-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    flex: 1 0 0;
+  }
+
+  .contacts__container-content-social {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .social {
+    display: flex;
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 1px solid var(--border-light, #C1B6AD);
+    transition: 1s;
+  }
+
+  .social:hover {
+    background-color: #E1D4C9;
+  }
+
+  .social:hover .social-icon {
+    stroke: #403F3D;
+  }
+
+  .content__contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .content__contacts-info {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
   }
   
