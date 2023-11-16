@@ -283,8 +283,27 @@ table {
     border: none;
   }
 
+  .menu__coffee-cup-pick {
+    opacity: 0;
+    transition: 0.5s;
+  }
+
   .button__menu-text {
     color: var(--text-dark, #403F3D);
+    transform: translateX(25%);
+    transition: 0.5s;
+  }
+
+  .button__menu:hover {
+    cursor: pointer;
+  }
+
+  .button__menu:hover .menu__coffee-cup-pick {
+    opacity: 1;
+  }
+
+  .button__menu:hover .button__menu-text {
+    transform: translateX(-5%);
   }
 
   .container {
@@ -396,6 +415,8 @@ table {
     align-items: center;
     border-radius: 100px;
     border: 1px solid var(--border-dark, #665F55);
+    background: var(--background-body);
+    cursor: pointer;
   }
 
   .slider__button:hover {
@@ -533,6 +554,7 @@ table {
     border: 1px solid var(--border-dark, #665F55);
     transition: 1s;
     background: var(--background-body);
+    cursor:pointer;
   }
 
   .button-app-store-text {
