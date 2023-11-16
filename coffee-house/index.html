@@ -20,22 +20,22 @@
                     <nav class="header__nav">
                         <ul class="header__menu">
                             <li class="header__menu-item">
-                                <a href="#favorite__coffee" class="header__link">Favorite coffee</a>
+                                <a href="#favorite__coffee" class="header__link text_Desktop">Favorite coffee</a>
                             </li>
                             <li class="header__menu-item">
-                                <a href="#about" class="header__link">About</a>
+                                <a href="#about" class="header__link text_Desktop">About</a>
                             </li>
                             <li class="header__menu-item">
-                                <a href="#mobile_app" class="header__link">Mobile app</a>
+                                <a href="#mobile_app" class="header__link text_Desktop">Mobile app</a>
                             </li>
                             <li class="header__menu-item">
-                                <a href="#contacts" class="header__link">Contacts</a>
+                                <a href="#contacts" class="header__link text_Desktop">Contacts</a>
                             </li>
                         </ul>
                     </nav>
                     <div class="coffee-menu">
                         <div class="header__coffee-menu-item">
-                            <a href="#!" class="header__link">Menu</a>
+                            <a href="#!" class="header__link text_Desktop">Menu</a>
                             <img src="./img/svg/coffee-cup.svg" alt="Menu" class="header__coffee-cup-pick">
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                 <div class="enjoy">
                     <div class="enjoy__content">
                         <h1>
-                            Enjoy premium coffee at our charming cafe
+                            <span class="enjoy_italic">Enjoy</span> premium coffee at our charming cafe
                         </h1>
                         <p>
                             With its inviting atmosphere and delicious coffee options, 
@@ -54,7 +54,7 @@
                             their favorite beverage.
                         </p>
                         <button class="button__menu">
-                            <span class="button__menu-text">Menu</span>
+                            <span class="button__menu-text text_Desktop">Menu</span>
                         </button>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
         </header>
         <div id="favorite__coffee" class="wrapper">
             <div class="container">
-                <h2>Choose your favorite coffee</h2>
+                <h2>Choose your <span class="italic_accent">favorite</span> coffee</h2>
                 <div class="slider">
                     <div class="slider_container">
                         <button class="slider__button">
@@ -74,11 +74,13 @@
                             <div class="slide slide-1">
                                 <div class="slide__content">
                                     <div class="img__slide-1"></div>
-                                    <div class="description__side">
+                                    <div class="description__slide">
                                         <h3>S’mores Frappuccino</h3>
-                                        <p>This new drink takes an espresso and 
-                                        mixes it with brown sugar and cinnamon 
-                                        before being topped with oat milk.</p>
+                                        <p class="slider__description-text">
+                                            This new drink takes an espresso and 
+                                            mixes it with brown sugar and cinnamon 
+                                            before being topped with oat milk.
+                                        </p>
                                         <h3>$5.50</h3>
                                     </div>
                                 </div>
@@ -100,9 +102,9 @@
         </div>
         <div id="about" class="about">
             <div class="container">
-                <h2>Resource is the perfect and cozy place 
-                    where you can enjoy a variety of hot beverages, 
-                    relax, catch up with friends, or get some work done.
+                <h2 class="about_h2">Resource is <span class="italic_accent">the perfect and cozy place</span> 
+                    where you can enjoy a variety of hot beverages,relax,
+                     catch up with friends, or get some work done.
                 </h2>
                 <div class="about__imgbox">
                     <div class="about__imgbox__column">
@@ -127,8 +129,8 @@
         <div id="mobile_app" class="mobile_app">
             <div class="mobile_app__container">
                 <div class="mobile_app__content">
-                    <h2>Download our apps to start ordering</h2>
-                    <p>Download the Resource app today and experience 
+                    <h2 class="mobile_h2"><span class="italic_accent">Download</span> our apps to start ordering</h2>
+                    <p class="mobile_p">Download the Resource app today and experience 
                         the comfort of ordering your favorite coffee from 
                         wherever you are
                     </p>
@@ -163,7 +165,8 @@
         <footer id="contacts" class="contacts">
             <div class="contacts__container">
                 <div class="contacts__container-content">
-                    <h2>Sip, Savor, Smile. It’s coffee time!</h2>
+                    <h2 class="contacts_h2">Sip, Savor, Smile.
+                        <span class="contacts_italic">It’s coffee time!</span></h2>
                     <div class="contacts__container-content-social">
                         <a class="social" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -185,22 +188,22 @@
                     </div>
                 </div>
                 <div class="contacts__container-content">
-                    <h3>Contact us</h3>
+                    <h3 class="contacts_h3">Contact us</h3>
                     <div class="content__contacts">
-                        <a href="#" class="content__contacts-info">
+                        <a href="#" class="content__contacts-info text_Desktop">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path d="M16.6663 8.33329C16.6663 12.0152 9.99967 18.3333 9.99967 18.3333C9.99967 18.3333 3.33301 12.0152 3.33301 8.33329C3.33301 4.65139 6.31778 1.66663 9.99967 1.66663C13.6816 1.66663 16.6663 4.65139 16.6663 8.33329Z" stroke="#E1D4C9" stroke-width="1.5"/>
                                 <path d="M10.0003 9.16667C10.4606 9.16667 10.8337 8.79357 10.8337 8.33333C10.8337 7.8731 10.4606 7.5 10.0003 7.5C9.54009 7.5 9.16699 7.8731 9.16699 8.33333C9.16699 8.79357 9.54009 9.16667 10.0003 9.16667Z" fill="#E1D4C9" stroke="#E1D4C9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <span>8558 Green Rd.,  LA</span>
                         </a>
-                        <a href="#" class="content__contacts-info">
+                        <a href="#" class="content__contacts-info text_Desktop">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path d="M15.0984 12.2516L11.6665 12.9166C9.34845 11.7531 7.91654 10.4166 7.08321 8.33329L7.72483 4.89154L6.51197 1.66663L3.72946 1.66663C2.60191 1.66663 1.71466 2.59958 1.90108 3.71161C2.29888 6.08454 3.37231 10.0391 6.24987 12.9166C9.27338 15.9401 13.5661 17.3318 16.1378 17.9288C17.299 18.1983 18.3332 17.2908 18.3332 16.0988L18.3332 13.4843L15.0984 12.2516Z" stroke="#E1D4C9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <span>+1 (603) 555-0123</span>
                         </a>
-                        <p class="content__contacts-info">
+                        <p class="content__contacts-info text_Desktop">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <g clip-path="url(#clip0_217_1736)">
                                 <path d="M10 5L10 10L15 10" stroke="#E1D4C9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

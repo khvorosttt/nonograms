@@ -157,6 +157,9 @@ table {
     align-items: flex-start;
     gap: 8px;
     color: var(--text-dark, #403F3D);
+  }
+
+  .text_Desktop {
     font-feature-settings: 'clig' off, 'liga' off;
     /* Desktop/Action/link & button */
     font-family: Inter;
@@ -252,8 +255,13 @@ table {
     line-height: 105%;
   }
 
+  .enjoy_italic {
+    color: var(--text-accent);
+    font-style: italic;
+  }
+
   p {
-    color: #E1D4C9;
+    color: var(--text-light,#E1D4C9);
     font-feature-settings: 'clig' off, 'liga' off;
     /* Desktop/Body/medium */
     font-family: Inter;
@@ -271,7 +279,7 @@ table {
     align-items: center;
     gap: 8px;
     border-radius: 100px;
-    background: #E1D4C9;
+    background: var(--background-body,#E1D4C9);
     border: none;
   }
 
@@ -289,7 +297,7 @@ table {
   }
 
   h2 {
-    color: #403F3D;
+    color: var(--text-dark,#403F3D);
     text-align: center;
     font-feature-settings: 'clig' off, 'liga' off;
     /* Desktop/Heading/heading-2 */
@@ -298,6 +306,11 @@ table {
     font-style: normal;
     font-weight: 600;
     line-height: 125%; /* 75px */
+  }
+
+  .italic_accent {
+    font-style: italic;
+    color: var(--text-accent);
   }
 
   .slider {
@@ -370,6 +383,11 @@ table {
     line-height: 125%; /* 30px */
   }
 
+  .slider__description-text {
+    color: var(--text-dark);
+    text-align: center;
+  }
+
   .slider__button {
     display: flex;
     width: 60px;
@@ -381,12 +399,12 @@ table {
   }
 
   .slider__button:hover {
-    background-color: #665F55;
+    background-color:var(--border-dark,#665F55);
     transition: 1s;
   }
 
   .slider__button:hover .arrows_button{
-    stroke: #E1D4C9;
+    stroke: var(--background-body,#E1D4C9);
   }
 
   .slider__controls {
@@ -404,6 +422,10 @@ table {
 
   .controls__elem-checked {
     background: var(--border-dark, #665F55);
+  }
+
+  .about_h2 {
+    text-align: left;
   }
 
   .about__imgbox {
@@ -481,6 +503,14 @@ table {
     flex: 1 0 0;
   }
 
+  .mobile_h2 {
+    text-align: left;
+  }
+
+  .mobile_p {
+    color: var(--text-dark);
+  }
+
   .mobile_app__img {
     width: 630px;
     height: 630px;
@@ -502,6 +532,7 @@ table {
     border-radius: 100px;
     border: 1px solid var(--border-dark, #665F55);
     transition: 1s;
+    background: var(--background-body);
   }
 
   .button-app-store-text {
@@ -516,12 +547,12 @@ table {
   }
 
   .button-app-store:hover, .button-google-play:hover span {
-    color: #E1D4C9;
+    color: var(--background-body);
   }
 
   .button-app-store:hover  .mobile_buttons,
   .button-google-play:hover .mobile_buttons {
-    fill: #E1D4C9;
+    fill: var(--background-body);
   }
 
   .contacts {
@@ -552,6 +583,21 @@ table {
     flex: 1 0 0;
   }
 
+  .contacts_h2 {
+    text-align: left;
+    color: var(--text-light);
+  }
+
+  .contacts_italic {
+    font-style: italic;
+    color: var(--text-accent);
+  }
+
+  .contacts_h3 {
+    text-align: left;
+    color: var(--text-light);
+  }
+
   .contacts__container-content-social {
     display: flex;
     align-items: center;
@@ -570,11 +616,11 @@ table {
   }
 
   .social:hover {
-    background-color: #E1D4C9;
+    background-color: var(--background-body);
   }
 
   .social:hover .social-icon {
-    stroke: #403F3D;
+    stroke: var(--text-dark);
   }
 
   .content__contacts {
@@ -589,5 +635,6 @@ table {
     justify-content: center;
     align-items: flex-start;
     gap: 8px;
+    color: var(--text-light);
   }
   
