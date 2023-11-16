@@ -422,6 +422,77 @@ table {
     scale:0.92;
   }
 
+  .mobile_app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
- 
+  .mobile_app__container {
+    display: flex;
+    max-width: 1360px;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    flex: 1 0 0;
+  }
+
+  .mobile_app__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    flex: 1 0 0;
+  }
+
+  .mobile_app__img {
+    width: 630px;
+    height: 630px;
+    background: url(../img/png/mobile-screens.png);
+  }
+
+  .mobile_app_buttons {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .button-app-store, .button-google-play {
+    display: flex;
+    width: 200px;
+    padding: 12px 20px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 100px;
+    border: 1px solid var(--border-dark, #665F55);
+    transition: 1s;
+  }
+
+  .button-app-store-text {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .button-app-store:hover, .button-google-play:hover {
+    background-color: var(--border-dark, #665F55);
+  }
+
+  .button-app-store:hover, .button-google-play:hover span {
+    color: #E1D4C9;
+  }
+
+  .button-app-store:hover  .mobile_buttons,
+  .button-google-play:hover .mobile_buttons {
+    fill: #E1D4C9;
+  }
+
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+  }
   
