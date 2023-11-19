@@ -223,6 +223,7 @@
     border-radius: 100px;
     background: var(--background-body,#E1D4C9);
     border: none;
+    text-decoration: none;
   }
 
   .menu__coffee-cup-pick {
