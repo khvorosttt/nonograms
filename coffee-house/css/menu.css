@@ -250,6 +250,62 @@ table {
     width: 800px;
   }
 
+  .button_tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .tab__item {
+    display: flex;
+    padding: 8px 16px 8px 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 100px;
+    background: none;
+    border: 1px solid var(--border-light, #C1B6AD);
+  }
+
+  .tab__item-active {
+    background: var(--background-container, #665F55);
+    border: var(--background-container);
+  }
+
+  .tab__item-name {
+    color: var(--text-dark, #403F3D);
+    /* Desktop/Action/link & button */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 24px */
+  }
+
+  .tab__item-active .tab__item-name {
+    color: var(--text-dark, #403F3D);
+  }
+
+  .tab__item-active .tab__item-emoji {
+    background: var(--background-body);
+  }
+
+  .tab__item-active .tab__item-name {
+    color: var(--background-body);
+  }
+
+  .tab__item-emoji {
+    width: 30px;
+    height: 30px;
+    background: var(--border-light);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .gallery_column {
     display: flex;
     max-width: 1360px;
