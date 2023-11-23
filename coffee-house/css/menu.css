@@ -91,7 +91,7 @@ table {
   }
 
   body {
-    background: var(--background-backdrop,rgba(64, 63, 61, 0.80));
+    background: var(--background-body);
   }
 
   .menu__page {
@@ -227,6 +227,10 @@ table {
     margin-bottom: 100px;
   }
 
+  .hidden__h {
+    display: none;
+  }
+
   .menu-title {
     display: flex;
     flex-direction: column;
@@ -272,11 +276,15 @@ table {
     border-radius: 100px;
     background: none;
     border: 1px solid var(--border-light, #C1B6AD);
+    cursor: pointer;
+    transition: 1s;
   }
 
   .tab__item-active {
     background: var(--background-container, #665F55);
     border: var(--background-container);
+    cursor: default;
+    pointer-events: none;
   }
 
   .tab__item-name {
@@ -289,16 +297,19 @@ table {
     line-height: 150%; /* 24px */
   }
 
-  .tab__item-active .tab__item-name {
-    color: var(--text-dark, #403F3D);
+  .tab__item:hover {
+    background-color: var(--background-container);
+    border: var(--background-container);
   }
 
-  .tab__item-active .tab__item-emoji {
+  .tab__item-active .tab__item-name,
+  .tab__item:hover .tab__item-name {
+    color: var(--text-light);
+  }
+
+  .tab__item-active .tab__item-emoji,
+  .tab__item:hover .tab__item-emoji  {
     background: var(--background-body);
-  }
-
-  .tab__item-active .tab__item-name {
-    color: var(--background-body);
   }
 
   .tab__item-emoji {
@@ -473,4 +484,23 @@ table {
     gap: 8px;
     color: var(--text-light);
   }
+  a.content__contacts-info {
+    position: relative;
+  }
+  a.content__contacts-info::after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    opacity: 0;
+    transition: 0.5s;
+    height: 2px;
+    background: var(--text-light);
+  }
 
+  a.content__contacts-info:hover::after {
+    opacity: 1;
+    width: 100%;
+  }
