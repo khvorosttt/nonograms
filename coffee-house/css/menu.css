@@ -190,8 +190,6 @@ table {
     opacity: 1;
     height: 2px;
     background: var(--text-dark);
-    pointer-events: none;
-    cursor: default;
   }
 
   .header__menu-item:hover::after {
@@ -221,6 +219,8 @@ table {
     flex-direction: row;
     align-items: center;
     gap: 4px;
+    pointer-events: none;
+    cursor: default;
   }
 
   .menu {
