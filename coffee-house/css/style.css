@@ -600,4 +600,25 @@
     gap: 8px;
     color: var(--text-light);
   }
+
+  a.content__contacts-info {
+    position: relative;
+  }
+  a.content__contacts-info::after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    opacity: 0;
+    transition: 0.5s;
+    height: 2px;
+    background: var(--text-light);
+  }
+
+  a.content__contacts-info:hover::after {
+    opacity: 1;
+    width: 100%;
+  }
   
