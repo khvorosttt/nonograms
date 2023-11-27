@@ -1,28 +1,3 @@
-/* inter-regular - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/Inter-Regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* inter-600 - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  src: url('../fonts/Inter-Bold.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* inter-600 - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Inter';
-  font-style: italic;
-  font-weight: 600;
-  src: url('../fonts/Inter-BoldItalic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -125,7 +100,7 @@ nav {
 
 .text_Desktop {
   /* Desktop/Action/link & button */
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -213,7 +188,7 @@ nav {
 h1 {
   color: var(--text-light, #E1D4C9);
   /* Desktop/Heading/heading-1 */
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 72px;
   font-style: normal;
   font-weight: 600;
@@ -228,7 +203,7 @@ h1 {
 p {
   color: var(--text-light,#E1D4C9);
   /* Desktop/Body/medium */
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -272,7 +247,7 @@ h2 {
   color: var(--text-dark,#403F3D);
   text-align: center;
   /* Desktop/Heading/heading-2 */
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 60px;
   font-style: normal;
   font-weight: 600;
@@ -352,7 +327,7 @@ h3 {
   color: var(--text-dark, #403F3D);
   text-align: center;
   /* Desktop/Heading/heading-3 */
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
@@ -521,7 +496,7 @@ h3 {
   gap: 2px;
   color: var(--text-dark, #403F3D);
   /* Desktop/Action/link & button */
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
