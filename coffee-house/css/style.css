@@ -89,6 +89,14 @@ header {
   align-self: stretch;
 }
 
+.menu__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
 nav {
   display: flex;
   justify-content: center;
@@ -753,7 +761,7 @@ a.content__contacts-info::after {
     display: flex;
   }
 
-  nav {
+  .menu__nav {
     display: none;
   }
 
@@ -806,19 +814,33 @@ a.content__contacts-info::after {
   .imgbox__column-2-1 img,
   .imgbox__column-2-2 img {
     scale: 1.2;
+    transition: scale 1s;
+  }
+}
+
+@media (hover:hover) and (max-width:680px) {
+  .imgbox__column-1-1 img:hover,
+  .imgbox__column-2-2 img:hover {
+    scale: 1.1;
   }
 }
 
 @media (max-width:630px) {
   .imgbox__column-1-1 img,
-  .imgbox__column-1-2 img,
-  .imgbox__column-2-1 img,
   .imgbox__column-2-2 img {
     scale: 1.3;
+    transition: scale 1s;
   }
 
   .mobile_app__container {
     gap: 80px;
+  }
+}
+
+@media (hover:hover) and (max-width:630px) {
+  .imgbox__column-1-1 img:hover,
+  .imgbox__column-2-2 img:hover {
+    scale: 1.2;
   }
 }
 
@@ -828,6 +850,7 @@ a.content__contacts-info::after {
   .imgbox__column-2-1 img,
   .imgbox__column-2-2 img {
     scale: 1.45;
+    transition: scale 1s;
   }
 
   .mobile_app__container {
@@ -835,16 +858,29 @@ a.content__contacts-info::after {
   }
 }
 
+@media (hover:hover) and (max-width:580px) {
+  .imgbox__column-1-1 img:hover,
+  .imgbox__column-2-2 img:hover {
+    scale: 1.35;
+  }
+}
+
 @media (max-width:550px) {
   .imgbox__column-1-1 img,
-  .imgbox__column-1-2 img,
-  .imgbox__column-2-1 img,
   .imgbox__column-2-2 img {
     scale: 2;
+    transition: scale 1s;
   }
 
   .mobile_app__container {
     gap: 60px;
+  }
+}
+
+@media (hover:hover) and (max-width:550px) {
+  .imgbox__column-1-1 img:hover,
+  .imgbox__column-2-2 img:hover {
+    scale: 1.9;
   }
 }
 
@@ -868,7 +904,7 @@ a.content__contacts-info::after {
     display: flex;
   }
 
-  nav {
+  .menu__nav {
     display: none;
   }
 
@@ -905,30 +941,11 @@ a.content__contacts-info::after {
   }
   
   .slide__content {
-    display: flex;
-    /*width: 480px;*/
     max-width: 348px;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
   }
   
   .slider__buttons {
     display: none;
-    justify-content: space-between;
-    position: absolute;
-    width: 90vw;
-  }
-  
-  .slider__controls__elem {
-    width: 40px;
-    height: 4px;
-    border-radius: 100px;
-    background: var(--border-light, #C1B6AD);
-  }
-  
-  .controls__elem-checked {
-    background: var(--border-dark, #665F55);
   }
 
   .about__imgbox {
