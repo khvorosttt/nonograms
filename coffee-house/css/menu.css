@@ -96,7 +96,7 @@ table {
 
   .menu__page {
     display: flex;
-    width: 1440px;
+    /*width: 1440px;*/
     max-width: 1440px;
     padding: 20px 0px 40px 0px;
     flex-direction: column;
@@ -218,6 +218,24 @@ table {
     cursor: default;
   }
 
+  .menu__burger {
+    display: none;
+    flex-direction: column;
+    width: 44px;
+    height: 44px;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 1px solid var(--border-dark);
+  }
+  
+  .burger-line {
+    width: 16px;
+    border: 1px solid var(--text-dark);
+    border-radius: 50px;
+  }
+
   .menu {
     margin-bottom: 100px;
   }
@@ -313,9 +331,10 @@ table {
   .gallery_column {
     display: flex;
     max-width: 1360px;
-    width: 1360px;
+    /*width: 1360px;*/
     gap: 40px;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .gallery-item {
@@ -510,5 +529,13 @@ table {
     a.content__contacts-info:hover::after {
       opacity: 1;
       width: 100%;
+    }
+  }
+
+  @media (min-width:769px) and (max-width:1300px){
+    .contacts__container {
+      flex-direction: column;
+      padding: 100px min(100px,8.72%);
+      align-items: flex-start;
     }
   }
