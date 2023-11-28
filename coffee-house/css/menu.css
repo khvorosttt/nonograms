@@ -299,7 +299,7 @@ table {
 
   .tab__item:hover {
     background-color: var(--background-container);
-    border: var(--background-container);
+    border: 1px solid var(--background-container);
   }
 
   .tab__item-active .tab__item-name,
