@@ -527,7 +527,7 @@
     background-color: var(--border-dark, #665F55);
   }
 
-  .button-app-store:hover, .button-google-play:hover span {
+  .button-app-store:hover span, .button-google-play:hover span {
     color: var(--background-body);
   }
 
