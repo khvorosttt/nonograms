@@ -281,13 +281,14 @@
   }
 
   .add__cards {
-    display: flex;
+    display: none;
     width: 60px;
     height: 60px;
     justify-content: center;
     align-items: center;
     border-radius: 100px;
     border: 1px solid var(--border-dark);
+    transition: 1s;
   }
 
   .gallery_column {
@@ -483,6 +484,15 @@
       scale: 0.92;
     }
 
+    .add__cards:hover {
+      border: 1px solid var(--background-body);
+      background: var(--background-container);
+    }
+
+    .add__cards:hover path {
+      stroke: var(--background-body);
+    }
+
     .social:hover {
       background-color: var(--background-body);
     }
@@ -497,7 +507,7 @@
     }
   }
 
-  @media (min-width:768px) and (max-width:1300px){
+  @media (min-width:769px) and (max-width:1300px){
     .contacts__container {
       flex-direction: column;
       padding: 100px min(100px,8.72%);
@@ -525,6 +535,10 @@
   
     .menu__nav {
       display: none;
+    }
+
+    .add__cards {
+      display: flex;
     }
 
     .contacts__container {
@@ -560,6 +574,10 @@
       gap: min(16px,5%);
     }
 
+    .add__cards {
+      display: flex;
+    }
+
     .contacts__container {
       flex-direction: column;
       padding: min(100px,20%) min(60px,10%);
@@ -591,6 +609,10 @@
 
     .button_tabs {
       gap: 8px;
+    }
+
+    .add__cards {
+      display: flex;
     }
 
     .gallery-item {
