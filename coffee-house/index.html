@@ -6,6 +6,7 @@
     <title>Coffee House</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/normalize.css">
+    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
     <link rel="icon" type="image/png" href="./img/png/favicon.png">
 </head>
 <body>
@@ -18,29 +19,35 @@
                             <img src="./img/svg/coffee-house-logo.svg" alt="Coffee-house" class="header__logo-pick">
                         </a>
                     </div>
-                    <nav class="header__nav">
-                        <ul class="header__menu">
-                            <li class="header__menu-item">
-                                <a href="#favorite__coffee" class="header__link text_Desktop">Favorite coffee</a>
-                            </li>
-                            <li class="header__menu-item">
-                                <a href="#about" class="header__link text_Desktop">About</a>
-                            </li>
-                            <li class="header__menu-item">
-                                <a href="#mobile_app" class="header__link text_Desktop">Mobile app</a>
-                            </li>
-                            <li class="header__menu-item">
-                                <a href="#contacts" class="header__link text_Desktop">Contact us</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div class="coffee-menu">
-                        <div class="header__coffee-menu-item">
+                    <div class="menu__nav">
+                        <nav class="header__nav">
+                            <ul class="header__menu">
+                                <li class="header__menu-item">
+                                    <a href="#favorite__coffee" class="header__link text_Desktop">Favorite coffee</a>
+                                </li>
+                                <li class="header__menu-item">
+                                    <a href="#about" class="header__link text_Desktop">About</a>
+                                </li>
+                                <li class="header__menu-item">
+                                    <a href="#mobile_app" class="header__link text_Desktop">Mobile app</a>
+                                </li>
+                                <li class="header__menu-item">
+                                    <a href="#contacts" class="header__link text_Desktop">Contact us</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="coffee-menu">
+                            <div class="header__coffee-menu-item">
                                 <a href="./menu.html" class="header__link text_Desktop">
                                     Menu
                                     <img src="./img/svg/coffee-cup.svg" alt="Menu" class="header__coffee-cup-pick">
                                 </a>
+                            </div>
                         </div>
+                    </div>
+                    <div id="burger" class="menu__burger">
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
                     </div>
                 </div>
             </div>
@@ -69,11 +76,18 @@
                 <h2>Choose your <span class="italic_accent">favorite</span> coffee</h2>
                 <div class="slider">
                     <div class="slider_container">
-                        <button class="slider__button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path class="arrows_button" d="M18.5 12H6M6 12L12 6M6 12L12 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
-                             </svg>
-                        </button>
+                        <div class="slider__buttons">
+                            <button class="slider__button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <path class="arrows_button" d="M18.5 12H6M6 12L12 6M6 12L12 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
+                                 </svg>
+                            </button>
+                            <button class="slider__button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path class="arrows_button" d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
                         <div class="row__slider">
                             <div class="slide slide-1">
                                 <div class="slide__content">
@@ -92,11 +106,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="slider__button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path class="arrows_button" d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
                     </div>
                     <div class="slider__controls">
                         <span class="slider__controls__elem controls__elem-checked"></span>
@@ -165,7 +174,9 @@
                         </button>
                     </div>
                 </div>
-                <div class="mobile_app__img"></div>
+                <div class="mobile_app__img">
+                    <img src="./img/png/mobile-screens.png" alt="Mobile Screen">
+                </div>
             </div>
         </div>
         <footer id="contacts" class="contacts">
@@ -229,6 +240,6 @@
             </div>
         </footer>
     </div>
-    
+    <script src="burger.js"></script>
 </body>
 </html>
