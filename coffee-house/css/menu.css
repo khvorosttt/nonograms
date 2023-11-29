@@ -233,7 +233,6 @@
     border-radius: 100px;
     background: none;
     border: 1px solid var(--border-light, #C1B6AD);
-    cursor: pointer;
     transition: 1s;
   }
 
@@ -307,7 +306,6 @@
     border-radius: 40px;
     border: 1px solid var(--border-light, #C1B6AD);
     max-width: 310px;
-    cursor: pointer;
     height: 506px;
   }
 
@@ -459,6 +457,16 @@
     transition: 0.5s;
     height: 2px;
     background: var(--text-light);
+  }
+
+  @media (pointer:fine) {
+    .tab__item {
+      cursor: pointer;
+    }
+
+    .gallery-item {
+      cursor: pointer;
+    }
   }
 
   @media(hover:hover) {

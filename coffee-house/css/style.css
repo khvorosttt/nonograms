@@ -360,7 +360,6 @@ h3 {
   border-radius: 100px;
   border: 1px solid var(--border-dark, #665F55);
   background: var(--background-body);
-  cursor: pointer;
 }
 
 .slider__buttons {
@@ -498,7 +497,6 @@ h3 {
   border: 1px solid var(--border-dark, #665F55);
   transition: 1s;
   background: var(--background-body);
-  cursor:pointer;
 }
 
 .button-app-store-text {
@@ -614,7 +612,17 @@ a.content__contacts-info::after {
   background: var(--text-light);
 }
 
-@media(hover:hover) {
+@media (pointer: fine) {
+  .slider__button {
+    cursor: pointer;
+  }
+
+  .button-app-store, .button-google-play {
+    cursor:pointer;
+  }
+}
+
+@media(hover:hover) and (pointer: fine) {
   .header__menu-item:hover::after,
   .header__coffee-menu-item:hover::after {
     opacity: 1;
