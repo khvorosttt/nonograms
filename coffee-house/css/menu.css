@@ -169,6 +169,15 @@
     width: 16px;
     border: 1px solid var(--text-dark);
     border-radius: 50px;
+    transition: 0.5s;
+  }
+
+  .menu__burger-active .burger-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  
+  .menu__burger-active .burger-line:nth-child(2) {
+    transform: translateY(-4px) rotate(-45deg);
   }
 
   .menu {
