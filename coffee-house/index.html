@@ -77,21 +77,21 @@
         <div id="favorite__coffee" class="wrapper">
             <div class="container">
                 <h2>Choose your <span class="italic_accent">favorite</span> coffee</h2>
-                <div class="slider">
+                <div id="slider" class="slider">
                     <div class="slider_container">
                         <div class="slider__buttons">
-                            <button class="slider__button">
+                            <button id="previous" class="slider__button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path class="arrows_button" d="M18.5 12H6M6 12L12 6M6 12L12 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
                                  </svg>
                             </button>
-                            <button class="slider__button">
+                            <button id="next" class="slider__button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path class="arrows_button" d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </button>
                         </div>
-                        <div class="row__slider">
+                        <div id="row__slider" class="row__slider">
                             <div class="slide">
                                 <div class="slide__content">
                                     <div class="img__slide">
@@ -276,5 +276,6 @@
         </footer>
     </div>
     <script src="burger.js"></script>
+    <script src="slider.js"></script>
 </body>
 </html>

@@ -295,6 +295,7 @@ h2 {
   align-items: center;
   gap: 40px;
   align-self: stretch;
+  overflow: hidden;
 }
 
 .row__slider {
@@ -305,8 +306,9 @@ h2 {
   align-items: flex-start;
   flex: 1 0 0;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   gap: 120px;
+  transition: 1.5s;
 }
 
 .slide {
@@ -730,7 +732,7 @@ a.content__contacts-info::after {
   }
 
   .slide {
-    min-width: 348px;
+    /* min-width: 348px; */
     max-width: 1152px;
   }
   
@@ -922,6 +924,7 @@ a.content__contacts-info::after {
   
   .imgbox__column-1-1, .imgbox__column-2-2 {
     max-width: 726px;
+    min-height: 590px;
   }
   
   .imgbox__column-1-2, .imgbox__column-2-1 {
@@ -1038,6 +1041,11 @@ a.content__contacts-info::after {
 
   .row__slider {
     max-width: 348px;
+    gap: 250px;
+  }
+
+  .description__slide {
+    max-width: 340px;
   }
 }
 
@@ -1098,7 +1106,6 @@ a.content__contacts-info::after {
   }
   
   .imgbox__column-1-1, .imgbox__column-2-2 {
-    min-width: 348px;
     min-height: 590px;
   }
   
