@@ -7,6 +7,7 @@ let shift = 0;
 const rowSliderStyle = getComputedStyle(rowSlider);
 const lastSlide = slides.length - 1;
 let slideSize = slides[0].clientWidth + parseInt(rowSliderStyle.getPropertyValue('gap'),10);
+const slideTime = 5000;
 
 
 function previousSlide() {
@@ -31,3 +32,11 @@ function nextSlide() {
 
 previous.addEventListener("click", previousSlide);
 next.addEventListener("click", nextSlide);
+
+function startInterval() {
+    setInterval( () => {
+        nextSlide();
+    }, slideTime);
+}
+
+startInterval();
