@@ -8,9 +8,12 @@ const rowSliderStyle = getComputedStyle(rowSlider);
 const lastSlide = slides.length - 1;
 let slideSize = slides[0].clientWidth + parseInt(rowSliderStyle.getPropertyValue('gap'),10);
 const slideTime = 5000;
+let slideInterval;
 
 
 function previousSlide() {
+    stopInterval();
+    startInterval();
     currentSlide = (currentSlide === 0) ? lastSlide : (currentSlide - 1);
     if (currentSlide === lastSlide) {
         shift -= currentSlide * slideSize;
@@ -21,6 +24,8 @@ function previousSlide() {
 }
 
 function nextSlide() {
+    stopInterval();
+    startInterval();
     currentSlide = (currentSlide === lastSlide) ? 0 : (currentSlide + 1);
     if (currentSlide === 0) {
         shift += (lastSlide) * slideSize;
@@ -34,9 +39,15 @@ previous.addEventListener("click", previousSlide);
 next.addEventListener("click", nextSlide);
 
 function startInterval() {
-    setInterval( () => {
+    slideInterval = setInterval( () => {
         nextSlide();
     }, slideTime);
 }
 
+function stopInterval() {
+    clearInterval(slideInterval);
+}
+
+rowSlider.addEventListener("mouseover",stopInterval);
+rowSlider.addEventListener("mouseout", startInterval);
 startInterval();
