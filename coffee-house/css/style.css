@@ -388,10 +388,16 @@ h3 {
   height: 4px;
   border-radius: 100px;
   background: var(--border-light, #C1B6AD);
+  position: relative;
 }
 
-.controls__elem-checked {
+.progress {
+  width: 0%;
+  height: 4px;
+  border-radius: 100px;
   background: var(--border-dark, #665F55);
+  transition: 0.5s;
+  position: absolute;
 }
 
 .about {
