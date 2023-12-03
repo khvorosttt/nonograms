@@ -411,7 +411,7 @@ h3 {
 
 .imgbox__column-1-1, .imgbox__column-2-2 {
   max-width: 660px;
-  max-height: 590px;
+  height: 590px;
   border-radius: 20px;
   overflow: hidden;
   position: relative;
