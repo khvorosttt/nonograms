@@ -532,14 +532,14 @@
     }
   }
 
-  @media (max-width:768px) {
+  /* @media (max-width:768px) {
     .gallery-item:nth-child(5),
     .gallery-item:nth-child(6),
     .gallery-item:nth-child(7),
     .gallery-item:nth-child(8) {
       display: none;
     }
-  }
+  } */
 
   @media (width:768px) {
     .menu__page {
