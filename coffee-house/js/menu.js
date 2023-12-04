@@ -4,7 +4,8 @@ const gallery_column = document.querySelector(".gallery_column");
 const tab__items = document.querySelectorAll(".tab__item");
 
 function menuList(event) {
-    const currentElem = event.target;
+    const currentElem = event.currentTarget;
+    console.log(currentElem);
     tab__items.forEach( (tab) => {
         tab.classList.remove("tab__item-active");
     });
