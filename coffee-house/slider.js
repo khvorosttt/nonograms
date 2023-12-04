@@ -70,12 +70,12 @@ function stopInterval() {
 previous.addEventListener("click", () => {
     stopInterval();
     startInterval();
-    previousSlide;
+    previousSlide();
 });
 next.addEventListener("click", () => {
     stopInterval();
     startInterval();
-    nextSlide;
+    nextSlide();
 });
 rowSlider.addEventListener("mouseover",stopInterval);
 rowSlider.addEventListener("mouseout", startInterval);
