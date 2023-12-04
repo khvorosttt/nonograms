@@ -8,6 +8,7 @@ let shift = 0;
 const rowSliderStyle = getComputedStyle(rowSlider);
 const lastSlide = slides.length - 1;
 let slideSize = slides[0].clientWidth + parseInt(rowSliderStyle.getPropertyValue('gap'),10);
+console.log(rowSlider.clientWidth);
 const slideTime = 5000;
 let slideInterval;
 const stepProgress = 10;
@@ -45,7 +46,7 @@ function nextSlide() {
     progressSize = 0;
     currentSlide = (currentSlide === lastSlide) ? 0 : (currentSlide + 1);
     if (currentSlide === 0) {
-        shift += (lastSlide) * slideSize;
+        shift += lastSlide * slideSize;
     } else {
         shift -= slideSize;
     }
@@ -79,5 +80,7 @@ next.addEventListener("click", () => {
 });
 rowSlider.addEventListener("mouseover",stopInterval);
 rowSlider.addEventListener("mouseout", startInterval);
+rowSlider.addEventListener("touchstart", stopInterval);
+rowSlider.addEventListener("touchend", startInterval);
 
 startInterval();
