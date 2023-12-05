@@ -1,7 +1,7 @@
 const galleryItem = (item) => `
     <div class="gallery-item">
         <div class="gallery-item-img">
-            <img src="./img/png/coffee-1.png" alt="${item.name}">
+            <img src="${item.img}" alt="${item.name}">
         </div>
         <div class="gallery-item-context">
             <h3 class="item__name">${item.name}</h3>

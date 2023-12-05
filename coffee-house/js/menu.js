@@ -1,4 +1,4 @@
-import info from '../products.json' assert { type: "json" };
+import info from '../data/products.json' assert { type: "json" };
 import galleryItem from './galleryItem.js';
 
 const gallery_column = document.querySelector(".gallery_column");
