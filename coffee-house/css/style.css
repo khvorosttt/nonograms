@@ -1,4 +1,4 @@
-html {
+fhtml {
   box-sizing: border-box;
   scroll-behavior: smooth;
   margin: 0 auto;
@@ -186,6 +186,7 @@ nav {
   background: url(../img/jpg/img-hero.jpg);
   background-repeat:no-repeat;
   background-position: center center;
+  background-size: cover;
 }
 
 .enjoy__content {
@@ -366,7 +367,7 @@ h3 {
   display: flex;
   justify-content: space-between;
   position: absolute;
-  width: 90vw;
+  width: 93vw;
 }
 
 .slider__controls {
@@ -684,7 +685,7 @@ a.content__contacts-info::after {
   }
 }
 
-@media(hover:hover) and (min-width:796px) and (max-width:1300px){
+@media(hover:hover) and (min-width:769px) and (max-width:1300px){
 
   .imgbox__column-1-1 img:hover,
   .imgbox__column-1-2 img:hover,
@@ -764,6 +765,10 @@ a.content__contacts-info::after {
     padding: 100px 60px;
   }
 
+  .slider__buttons {
+    width: 90vw;
+}
+
   .about__imgbox {
     flex-direction: column;
     align-items: center;
@@ -816,6 +821,10 @@ a.content__contacts-info::after {
   .enjoy {
     padding: min(100px,20%) min(60px,7%);
   }
+
+  .slider__buttons {
+    width: 90vw;
+}
 
   .wrapper,
   .about,
