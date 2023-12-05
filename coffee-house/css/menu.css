@@ -299,6 +299,10 @@
     transition: 1s;
   }
 
+  .add__cards.add__cards-active {
+    display: flex;
+  }
+
   .gallery_column {
     display: flex;
     max-width: 1360px;
@@ -554,9 +558,9 @@
       display: none;
     }
 
-    .add__cards {
+    /* .add__cards {
       display: flex;
-    }
+    } */
 
     .contacts__container {
       flex-direction: column;
@@ -672,9 +676,9 @@
       gap: min(16px,5%);
     }
 
-    .add__cards {
+    /* .add__cards {
       display: flex;
-    }
+    } */
 
     .contacts__container {
       flex-direction: column;
@@ -705,9 +709,9 @@
       gap: 8px;
     }
 
-    .add__cards {
+    /* .add__cards {
       display: flex;
-    }
+    } */
 
     .gallery-item {
       min-width: 0;
