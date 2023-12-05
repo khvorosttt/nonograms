@@ -23,19 +23,11 @@ function menuList(event) {
 }
 
 function resize() {
-    let sizeWindow = window.innerWidth;
+    let sizeWindow = document.documentElement.getBoundingClientRect().width;
     gallery_column.replaceChildren();
     categoryDataShow = [];
     if(sizeWindow < 1090){
-        for(let i=0; i<stepShow; i++) {
-            categoryDataShow.push(categoryData[i]);
-            gallery_column.insertAdjacentHTML('beforeend',galleryItem(categoryData[i]).toString());
-        }
-        if(categoryDataShow.length!=categoryData.length) {
-            addCards.classList.add('add__cards-active');
-        } else {
-            addCards.classList.remove('add__cards-active');
-        }
+        moreCards();
     } else {
         addCards.classList.remove('add__cards-active');
         categoryData.forEach( (item) => {
@@ -45,11 +37,24 @@ function resize() {
     }
 }
 
-resize();
+function moreCards() {
+    const startIndex = categoryDataShow.length;
+    const endIndex = categoryDataShow.length + stepShow;
+    for(let i=startIndex; i<endIndex; i++) {
+        categoryDataShow.push(categoryData[i]);
+        gallery_column.insertAdjacentHTML('beforeend',galleryItem(categoryData[i]).toString());
+    }
+    if(categoryDataShow.length!=categoryData.length) {
+        addCards.classList.add('add__cards-active');
+    } else {
+        addCards.classList.remove('add__cards-active');
+    }
+}
 
 window.addEventListener('resize', resize);
-
-
 tab__items.forEach( (tab) => {
     tab.addEventListener("click", (event) => {menuList(event);});
-})
+});
+addCards.addEventListener("click", moreCards);
+
+resize();
