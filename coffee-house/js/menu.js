@@ -1,6 +1,6 @@
 import info from '../data/products.json' assert { type: "json" };
 import galleryItem from './galleryItem.js';
-
+import * as modal  from './modal.js'
 const gallery_column = document.querySelector(".gallery_column");
 const tab__items = document.querySelectorAll(".tab__item");
 const addCards = document.querySelector(".add__cards");
@@ -9,6 +9,7 @@ let currentCategory = "coffee";
 let categoryData = info.filter(item => item.category === currentCategory);
 let categoryDataShow = [];
 const stepShow = 4;
+let galleryItems;
 
 function menuList(event) {
     categoryDataShow = [];
@@ -35,6 +36,7 @@ function resize() {
             gallery_column.insertAdjacentHTML('beforeend',galleryItem(item).toString());
         })
     }
+    galleryItems = document.querySelectorAll('.gallery-item');
 }
 
 function moreCards() {
@@ -58,3 +60,11 @@ tab__items.forEach( (tab) => {
 addCards.addEventListener("click", moreCards);
 
 resize();
+
+galleryItems.forEach( (item) => {
+    item.addEventListener('click', modal.showModal);
+})
+
+// function showModal() {
+//     console.log(galleryItems);
+// }
