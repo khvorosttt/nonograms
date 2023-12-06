@@ -5,12 +5,15 @@ const modal__sizeButtons = document.querySelectorAll(".size-item");
 const modal__additivesButtons = document.querySelectorAll(".additives-item");
 const modalClose = document.querySelector(".modal__button-close");
 const modalPrice = document.querySelector(".modal__total-price");
+const modalImg = document.querySelector('.modal__img');
 let priceSize;
 let priceAdditives = 0;
 
 export function showModal(item) {
     modal__background.classList.add('modal-active');
     document.body.classList.toggle("no-scroll");
+    modalImg.src = item.img;
+    modalImg.alt = item.name;
     modal__name.innerHTML = item.name;
     modal__description.innerHTML = item.description;
     let i = 0;
@@ -83,7 +86,7 @@ function closeModal() {
 modalClose.addEventListener("click", closeModal);
 modal__background.addEventListener("click", (event) => {
     if(event.target === modal__background) {
-        modal__background.classList.remove('modal-active');
+        closeModal()
     }
 });
 
