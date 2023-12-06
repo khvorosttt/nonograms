@@ -37,6 +37,12 @@ function resize() {
         })
     }
     galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach( (item) => {
+        item.addEventListener('click', (event) => {
+            const item_name = event.currentTarget.querySelector('.item__name').textContent.trim();
+            const item = info.filter(product => product.name === item_name);
+            modal.showModal(item[0]);});
+    })
 }
 
 function moreCards() {
@@ -60,13 +66,6 @@ tab__items.forEach( (tab) => {
 addCards.addEventListener("click", moreCards);
 
 resize();
-
-galleryItems.forEach( (item) => {
-    item.addEventListener('click', (event) => {
-        const item_name = event.currentTarget.querySelector('.item__name').textContent.trim();
-        const item = info.filter(product => product.name === item_name);
-        modal.showModal(item[0]);});
-})
 
 // function showModal() {
 //     console.log(galleryItems);
