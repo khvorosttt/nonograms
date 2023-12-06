@@ -829,13 +829,15 @@
   color: var(--text-dark)
 }
 
-.size-item-active {
+.size-item-active,
+.additives-item-active {
   background: var(--background-container);
   border: 1px solid var(--background-container);
   color: var(--text-light);
 }
 
-.size-item-active .size-item-size {
+.size-item-active .size-item-size,
+.additives-item-active .additives-item-number {
   background: var(--background-body);
 }
 

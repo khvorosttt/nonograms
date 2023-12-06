@@ -5,8 +5,8 @@ const modal__sizeButtons = document.querySelectorAll(".size-item");
 const modal__additivesButtons = document.querySelectorAll(".additives-item");
 const modalClose = document.querySelector(".modal__button-close");
 const modalPrice = document.querySelector(".modal__total-price");
-let priseSize;
-let priseAdditives = 0;
+let priceSize;
+let priceAdditives = 0;
 
 export function showModal(item) {
     modal__background.classList.add('modal-active');
@@ -19,7 +19,7 @@ export function showModal(item) {
         modal__sizeButtons[i].querySelector('.size-item-volume').innerHTML = item.sizes[key].size;
         if(key === "s") {
             modal__sizeButtons[i].classList.add("size-item-active");
-            priseSize = parseFloat(item.price) + parseFloat(item.sizes[key]["add-price"]);
+            priceSize = parseFloat(item.price) + parseFloat(item.sizes[key]["add-price"]);
         }
         i++;
     }
@@ -27,13 +27,13 @@ export function showModal(item) {
         modal__additivesButtons[j].querySelector('.additives-item-number').innerHTML = j+1;
         modal__additivesButtons[j].querySelector('.additives-item-name').innerHTML = item.additives[j].name;
     }
-    modalPrice.innerHTML = `$${(priseSize + priseAdditives).toFixed(2)}`;
+    modalPrice.innerHTML = `$${(priceSize + priceAdditives).toFixed(2)}`;
 
 
 
 
     modal__sizeButtons.forEach( (button) => {
-        button.addEventListener("click", changeSize);
+        button.addEventListener("click", (event) => {changeSize(event);});
     });
     
     function changeSize(event) {
@@ -43,14 +43,41 @@ export function showModal(item) {
         });
         currentElem.classList.add("size-item-active");
         let newSize = currentElem.querySelector('.size-item-size').textContent.trim().toLowerCase();
-        priseSize = parseFloat(item.price) + parseFloat(item.sizes[newSize]["add-price"]);
-        modalPrice.innerHTML = `$${(priseSize + priseAdditives).toFixed(2)}`;
+        priceSize = parseFloat(item.price) + parseFloat(item.sizes[newSize]["add-price"]);
+        modalPrice.innerHTML = `$${(priceSize + priceAdditives).toFixed(2)}`;
+    }
+
+   
+    modal__additivesButtons.forEach( (button) => {
+        button.addEventListener("click", (event) => {changeAdditives(event);})
+    })
+
+    function changeAdditives(event) {
+        const currentElem = event.currentTarget;
+        currentElem.classList.toggle("additives-item-active");
+        console.log(currentElem.querySelector('.additives-item-name').textContent);
+        const nameAddAdditive = currentElem.querySelector('.additives-item-name').textContent.trim();
+        const addAdditive = item.additives.find(additive => additive.name === nameAddAdditive);
+        console.log(addAdditive);
+        const priceAddAdditive = addAdditive["add-price"];
+        if(currentElem.classList.contains("additives-item-active")){
+            priceAdditives += parseFloat(priceAddAdditive);
+        } else {
+            priceAdditives -= parseFloat(priceAddAdditive);
+        }
+        modalPrice.innerHTML = `$${(priceSize + priceAdditives).toFixed(2)}`;
     }
 }
 
 function closeModal() {
     modal__background.classList.remove('modal-active');
     document.body.classList.toggle("no-scroll");
+    modal__sizeButtons.forEach( (button) => {
+        button.classList.remove("size-item-active");
+    });
+    modal__additivesButtons.forEach( (button) => {
+        button.classList.remove("additives-item-active");
+    });
 }
 
 modalClose.addEventListener("click", closeModal);
