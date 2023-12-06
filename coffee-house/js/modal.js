@@ -28,6 +28,24 @@ export function showModal(item) {
         modal__additivesButtons[j].querySelector('.additives-item-name').innerHTML = item.additives[j].name;
     }
     modalPrice.innerHTML = `$${(priseSize + priseAdditives).toFixed(2)}`;
+
+
+
+
+    modal__sizeButtons.forEach( (button) => {
+        button.addEventListener("click", changeSize);
+    });
+    
+    function changeSize(event) {
+        const currentElem = event.currentTarget;
+        modal__sizeButtons.forEach( (button) => {
+            button.classList.remove("size-item-active");
+        });
+        currentElem.classList.add("size-item-active");
+        let newSize = currentElem.querySelector('.size-item-size').textContent.trim().toLowerCase();
+        priseSize = parseFloat(item.price) + parseFloat(item.sizes[newSize]["add-price"]);
+        modalPrice.innerHTML = `$${(priseSize + priseAdditives).toFixed(2)}`;
+    }
 }
 
 function closeModal() {
@@ -41,3 +59,4 @@ modal__background.addEventListener("click", (event) => {
         modal__background.classList.remove('modal-active');
     }
 });
+
