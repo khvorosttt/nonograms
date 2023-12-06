@@ -826,7 +826,19 @@
   border-radius: 100px;
   background: transparent;
   border: 1px solid var(--border-light);
+  color: var(--text-dark)
 }
+
+.size-item-active {
+  background: var(--background-container);
+  border: 1px solid var(--background-container);
+  color: var(--text-light);
+}
+
+.size-item-active .size-item-size {
+  background: var(--background-body);
+}
+
 
 .size-item-size,
 .additives-item-number {
@@ -836,6 +848,7 @@
   align-items: center;
   border-radius: 100px;
   background: var(--border-light);
+  color: var(--text-dark);
 }
 
 .modal__total {
