@@ -747,15 +747,20 @@
     height: 100%;
     width: 100%;
     background: var(--background-backdrop);
+    transition: 2s;
+    opacity: 0;
   }
 
   .modal-active {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
   }
   .modal {
     display: flex;
     position: absolute;
-    margin: 0 auto;
+    margin: auto;
     width: 800px;
     padding: 16px;
     flex-direction: column;
@@ -763,6 +768,7 @@
     align-items: flex-start;
     border-radius: 40px;
     background: var(--background-body);
+    transition: 2s;
   }
 
   .modal__container {
