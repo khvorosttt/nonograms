@@ -60,20 +60,6 @@ function changeAdditives(event) {
     modalPrice.innerHTML = `$${(priceSize + priceAdditives).toFixed(2)}`;
 }
 
-function changeAdditives(event) {
-    const currentElem = event.currentTarget;
-    currentElem.classList.toggle('additives-item-active');
-    const nameAddAdditive = currentElem.querySelector('.additives-item-name').textContent.trim();
-    const addAdditive = item.additives.find(additive => additive.name === nameAddAdditive);
-    const priceAddAdditive = addAdditive["add-price"];
-    if(currentElem.classList.contains('additives-item-active')){
-        priceAdditives += parseFloat(priceAddAdditive);
-    } else {
-        priceAdditives -= parseFloat(priceAddAdditive);
-    }
-    modalPrice.innerHTML = `$${(priceSize + priceAdditives).toFixed(2)}`;
-}
-
 function closeModal() {
     modal__background.classList.remove('modal-active');
     document.body.classList.remove("no-scroll");

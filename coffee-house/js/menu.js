@@ -10,6 +10,7 @@ let categoryData = info.filter(item => item.category === currentCategory);
 let categoryDataShow = [];
 const stepShow = 4;
 let galleryItems;
+const widthAppearAddCards = 1090;
 
 function menuList(event) {
     categoryDataShow = [];
@@ -27,7 +28,7 @@ function resize() {
     let sizeWindow = document.documentElement.getBoundingClientRect().width;
     gallery_column.replaceChildren();
     categoryDataShow = [];
-    if(sizeWindow < 1090){
+    if(sizeWindow < widthAppearAddCards){
         moreCards();
     } else {
         addCards.classList.remove('add__cards-active');
@@ -43,7 +44,7 @@ function resize() {
             const item = info.filter(product => product.name === item_name);
             modal.showModal(item[0]);
         });
-    })
+    });
 }
 
 function moreCards() {
@@ -58,6 +59,14 @@ function moreCards() {
     } else {
         addCards.classList.remove('add__cards-active');
     }
+    galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach( (item) => {
+        item.addEventListener('click', (event) => {
+            const item_name = event.currentTarget.querySelector('.item__name').textContent.trim();
+            const item = info.filter(product => product.name === item_name);
+            modal.showModal(item[0]);
+        });
+    });
 }
 
 window.addEventListener('resize', resize);
