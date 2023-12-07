@@ -191,6 +191,7 @@ nav {
   border-radius: 40px;
   background-repeat:no-repeat;
   background-position: center center;
+  background-size: cover;
 }
 
 .enjoy__video {
@@ -379,7 +380,8 @@ h3 {
   display: flex;
   justify-content: space-between;
   position: absolute;
-  width: 88vw;
+  width: 93vw;
+  max-width: 1360px;
 }
 
 .slider__controls {
@@ -707,7 +709,7 @@ a.content__contacts-info::after {
   }
 }
 
-@media(hover:hover) and (min-width:796px) and (max-width:1300px){
+@media(hover:hover) and (min-width:769px) and (max-width:1300px){
 
   .imgbox__column-1-1 img:hover,
   .imgbox__column-1-2 img:hover,
@@ -754,7 +756,7 @@ a.content__contacts-info::after {
   
   .imgbox__column-1-1, .imgbox__column-2-2 {
     min-width: 688px;
-    min-height: 680px;
+    min-height: 590px;
   }
   
   .imgbox__column-1-2, .imgbox__column-2-1 {
@@ -871,13 +873,18 @@ a.content__contacts-info::after {
     padding: 100px 60px;
   }
 
+  .slider__buttons {
+    width: 90vw;
+}
+
   .about__imgbox {
     flex-direction: column;
     align-items: center;
   }
   
   .imgbox__column-1-1, .imgbox__column-2-2 {
-    max-width: 726px;
+    max-width: 688px;
+    min-height: 590px;
   }
   
   .imgbox__column-1-2, .imgbox__column-2-1 {
@@ -918,6 +925,10 @@ a.content__contacts-info::after {
   .enjoy__content {
     padding: min(100px,20%) min(60px,7%);
   }
+
+  .slider__buttons {
+    width: 90vw;
+}
 
   .wrapper,
   .about,
