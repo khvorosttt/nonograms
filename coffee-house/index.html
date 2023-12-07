@@ -19,7 +19,7 @@
                             <img src="./img/svg/coffee-house-logo.svg" alt="Coffee-house" class="header__logo-pick">
                         </a>
                     </div>
-                    <div class="menu__nav">
+                    <div id="menu__nav" class="menu__nav">
                         <nav class="header__nav">
                             <ul class="header__menu">
                                 <li class="header__menu-item">
@@ -53,6 +53,9 @@
             </div>
             <div class="wrapper">
                 <div class="enjoy">
+                    <video class="enjoy__video" playsinline autoplay loop muted poster="./img/jpg/img-hero.jpg">
+                        <source src="./video/enjoy-video.webm" type="video/webm">
+                    </video>
                     <div class="enjoy__content">
                         <h1>
                             <span class="enjoy_italic">Enjoy</span> premium coffee at our charming cafe
@@ -74,24 +77,24 @@
         <div id="favorite__coffee" class="wrapper">
             <div class="container">
                 <h2>Choose your <span class="italic_accent">favorite</span> coffee</h2>
-                <div class="slider">
+                <div id="slider" class="slider">
                     <div class="slider_container">
                         <div class="slider__buttons">
-                            <button class="slider__button">
+                            <button id="previous" class="slider__button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path class="arrows_button" d="M18.5 12H6M6 12L12 6M6 12L12 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
                                  </svg>
                             </button>
-                            <button class="slider__button">
+                            <button id="next" class="slider__button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path class="arrows_button" d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </button>
                         </div>
-                        <div class="row__slider">
-                            <div class="slide slide-1">
+                        <div id="row__slider" class="row__slider">
+                            <div class="slide">
                                 <div class="slide__content">
-                                    <div class="img__slide-1">
+                                    <div class="img__slide">
                                         <img src="./img/png/coffee-slider-1.png" alt="">
                                     </div>
                                     <div class="description__slide">
@@ -105,12 +108,50 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="slide">
+                                <div class="slide__content">
+                                    <div class="img__slide">
+                                        <img src="./img/png/coffee-slider-2.png" alt="">
+                                    </div>
+                                    <div class="description__slide">
+                                        <h3>Caramel Macchiato</h3>
+                                        <p class="slider__description-text">
+                                            Fragrant and unique classic espresso 
+                                            with rich caramel-peanut syrup, with 
+                                            cream under whipped thick foam.
+                                        </p>
+                                        <h3>$5.00</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide">
+                                <div class="slide__content">
+                                    <div class="img__slide">
+                                        <img src="./img/png/coffee-slider-3.png" alt="">
+                                    </div>
+                                    <div class="description__slide">
+                                        <h3>Ice coffee</h3>
+                                        <p class="slider__description-text">
+                                            A popular summer drink that tones 
+                                            and invigorates. Prepared from coffee, 
+                                            milk and ice.
+                                        </p>
+                                        <h3>$4.50</h3>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="slider__controls">
-                        <span class="slider__controls__elem controls__elem-checked"></span>
-                        <span class="slider__controls__elem"></span>
-                        <span class="slider__controls__elem"></span>
+                        <span class="slider__controls__elem">
+                            <span class="progress"></span>
+                        </span>
+                        <span class="slider__controls__elem">
+                            <span class="progress"></span>
+                        </span>
+                        <span class="slider__controls__elem">
+                            <span class="progress"></span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -241,5 +282,6 @@
         </footer>
     </div>
     <script src="burger.js"></script>
+    <script src="slider.js"></script>
 </body>
 </html>
