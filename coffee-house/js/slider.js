@@ -30,8 +30,9 @@ function progressSlide(slide) {
     } else {
         progressSize = startProgress;
         progress[slide].style.width = `${startProgress}%`;
-        nextSlide();
+        stopInterval();
         startInterval();
+        nextSlide();
     }
 }
 
@@ -60,18 +61,13 @@ function nextSlide() {
 }
 
 function startInterval() {
-    stopInterval();
     progressInterval = setInterval( () => {
         progressSlide(currentSlide);
     }, progressTime);
-    slideInterval = setInterval( () => {
-        nextSlide();
-    }, slideTime);
 }
 
 function stopInterval() {
     clearInterval(progressInterval);
-    clearInterval(slideInterval);
 }
 
 function touchStart(event) {
