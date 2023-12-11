@@ -10,6 +10,7 @@ const lastSlide = slides.length - 1;
 let slideWidth = slides[0].clientWidth;
 let slideSize = slideWidth + gapWidth;
 const progress = document.querySelectorAll(".progress");
+const minDist = slideWidth / 4;
 
 function previousSlide() {
     progress[currentSlide].classList.remove("active-progress");
@@ -35,6 +36,27 @@ function nextSlide() {
     progress[currentSlide].classList.add("active-progress");
 }
 
+function touchStart(event) {
+    progress[currentSlide].style.animationPlayState = "paused";
+    startTouch = event.touches[0].clientX;
+}
+
+function touchEnd(event) {
+    endTouch = event.changedTouches[0].clientX;
+    let distance = startTouch - endTouch;
+    if(Math.abs(distance)<minDist) {
+        progress[currentSlide].style.animationPlayState = "running";
+    } else {
+        if(distance>0){
+            progress[currentSlide].style.animationPlayState = "running";
+            nextSlide();
+        } else {
+            progress[currentSlide].style.animationPlayState = "running";
+            previousSlide();
+        }
+    }
+}
+
 previous.addEventListener("click", () => {
     previousSlide();
 });
@@ -50,4 +72,6 @@ rowSlider.addEventListener("mouseover", () => {
 rowSlider.addEventListener("mouseout", () => {
     progress[currentSlide].style.animationPlayState = "running";
 });
+rowSlider.addEventListener("touchstart", (event) => {touchStart(event)});
+rowSlider.addEventListener("touchend", (event) => {touchEnd(event)});
 
