@@ -11,11 +11,6 @@ let slideWidth = slides[0].clientWidth;
 let slideSize = slideWidth + gapWidth;
 const progress = document.querySelectorAll(".progress");
 
-progress.forEach ( (progressItem) => {
-    progressItem.addEventListener("animationend", nextSlide);
-})
-
-
 function previousSlide() {
     progress[currentSlide].classList.remove("active-progress");
     currentSlide = (currentSlide === 0) ? lastSlide : (currentSlide - 1);
@@ -46,3 +41,13 @@ previous.addEventListener("click", () => {
 next.addEventListener("click", () => {
     nextSlide();
 });
+progress.forEach ( (progressItem) => {
+    progressItem.addEventListener("animationend", nextSlide);
+});
+rowSlider.addEventListener("mouseover", () => {
+    progress[currentSlide].style.animationPlayState = "paused";
+});
+rowSlider.addEventListener("mouseout", () => {
+    progress[currentSlide].style.animationPlayState = "running";
+});
+
