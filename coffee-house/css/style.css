@@ -403,8 +403,21 @@ h3 {
   height: 4px;
   border-radius: 100px;
   background: var(--border-dark, #665F55);
-  transition: 0.5s;
   position: absolute;
+}
+
+.progress.active-progress {
+  animation: progress-width 5s infinite;
+}
+
+@keyframes progress-width {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;;
+  }
 }
 
 .about {
