@@ -11,18 +11,13 @@ let slideWidth = slides[0].clientWidth;
 let slideSize = slideWidth + gapWidth;
 const progress = document.querySelectorAll(".progress");
 
-function progressSlide() {
-    progress[currentSlide].classList.toggle("active-progress");
-    nextSlide();
-    progress[currentSlide].classList.toggle("active-progress");
-}
-
 progress.forEach ( (progressItem) => {
-    progressItem.addEventListener("animationend", progressSlide);
+    progressItem.addEventListener("animationend", nextSlide);
 })
 
 
 function previousSlide() {
+    progress[currentSlide].classList.remove("active-progress");
     currentSlide = (currentSlide === 0) ? lastSlide : (currentSlide - 1);
     if (currentSlide === lastSlide) {
         shift -= currentSlide * slideSize;
@@ -30,9 +25,11 @@ function previousSlide() {
         shift += slideSize;
     }
     rowSlider.style.transform = `translate(${shift}px)`;
+    progress[currentSlide].classList.add("active-progress");
 }
 
 function nextSlide() {
+    progress[currentSlide].classList.remove("active-progress");
     currentSlide = (currentSlide === lastSlide) ? 0 : (currentSlide + 1);
     if (currentSlide === 0) {
         shift += lastSlide * slideSize;
@@ -40,6 +37,7 @@ function nextSlide() {
         shift -= slideSize;
     }
     rowSlider.style.transform = `translate(${shift}px)`;
+    progress[currentSlide].classList.add("active-progress");
 }
 
 previous.addEventListener("click", () => {
