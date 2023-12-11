@@ -407,7 +407,7 @@ h3 {
 }
 
 .progress.active-progress {
-  animation: progress-width 5s infinite;
+  animation: progress-width 5s 1;
 }
 
 @keyframes progress-width {

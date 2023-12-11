@@ -9,6 +9,18 @@ let gapWidth = parseInt(rowSliderStyle.getPropertyValue('gap'),10)
 const lastSlide = slides.length - 1;
 let slideWidth = slides[0].clientWidth;
 let slideSize = slideWidth + gapWidth;
+const progress = document.querySelectorAll(".progress");
+
+function progressSlide() {
+    progress[currentSlide].classList.toggle("active-progress");
+    nextSlide();
+    progress[currentSlide].classList.toggle("active-progress");
+}
+
+progress.forEach ( (progressItem) => {
+    progressItem.addEventListener("animationend", progressSlide);
+})
+
 
 function previousSlide() {
     currentSlide = (currentSlide === 0) ? lastSlide : (currentSlide - 1);
