@@ -950,7 +950,7 @@
 
 @media(max-width: 980px) {
   .modal {
-    max-width: 656px;
+    max-width: 688px;
   }
 }
 
@@ -968,6 +968,10 @@
 
   .modal__column_img {
     display: none;
+  }
+
+  .modal__column_content {
+    padding-left: 0px;
   }
 }
 
