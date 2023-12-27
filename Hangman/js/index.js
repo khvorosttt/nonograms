@@ -32,7 +32,7 @@ for (let i = 0; i < answer.length; i++) {
 }
 
 const guesses = document.querySelector('.falseGuesses');
-
+const answerLetters = document.querySelectorAll('.answerLetter');
 const keyboardLetters = document.querySelectorAll('.letter');
 keyboardLetters.forEach( (item) => {
     item.addEventListener('click', (event) => {
@@ -64,10 +64,15 @@ function letterClick(event) {
 function ltrClick(clickLetter, currentElem) {
     if (!answer.includes(clickLetter)) {
         incorrectGuesses++;
-        currentElem.classList.add('letterClicked');
         guesses.innerHTML = incorrectGuesses + '/6';
+    } else {
+        for (let i = 0; i < answer.length; i++) {
+            if (answer[i] === clickLetter) {
+                answerLetters[i].innerHTML = clickLetter;
+            }
+        }
     }
-
+    currentElem.classList.add('letterClicked');
     clickedLetters.push(clickLetter);
     console.log(clickedLetters);
 }
