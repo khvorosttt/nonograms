@@ -30,7 +30,14 @@ for (let i = 0; i < answer.length; i++) {
     );
 }
 
+const guesses = document.querySelector('.falseGuesses');
+
 const keyboardLetters = document.querySelectorAll('.letter');
+keyboardLetters.forEach( (item) => {
+    item.addEventListener('click', (event) => {
+        letterClick(event);
+    });
+})
 
 
 
@@ -38,5 +45,9 @@ const keyboardLetters = document.querySelectorAll('.letter');
 function letterClick(event) {
     const currentElem = event.currentTarget;
     const clickLetter = currentElem.textContent.toUpperCase().trim();
-    if (answer.includes())
+    if (!answer.includes(clickLetter)) {
+        incorrectGuesses++;
+        currentElem.classList.add('letterClicked');
+        guesses.innerHTML = incorrectGuesses + '/6';
+    }
 }

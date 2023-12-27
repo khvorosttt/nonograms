@@ -70,3 +70,7 @@ body {
   background: purple;
   border-radius: 5px;
 }
+
+.letterClicked {
+  opacity: 0.8;
+}
