@@ -34,8 +34,8 @@ function initGame() {
     document.body.insertAdjacentHTML('beforeend', gameHTML(question, incorrectGuesses));
     canvas = document.getElementById('hangmanDraw');
     contextCanvas = canvas.getContext('2d');
+    contextCanvas.clearRect(0, 0, canvas.width, canvas.height);
     drawHangman();
-    // context.clearRect();
     word = document.querySelector('.word');
     virtualKeyboard = document.querySelector('.virtualKeyboard');
     addVirtualKeyboard();
@@ -52,17 +52,57 @@ function initGame() {
 }
 
 function drawHangman() {
-    contextCanvas.beginPath();
     contextCanvas.moveTo(0, canvas.height);
     contextCanvas.lineTo(canvas.width, canvas.height);
     contextCanvas.moveTo(40, canvas.height);
     contextCanvas.lineTo(40, 0);
     contextCanvas.lineTo(canvas.width - 90, 0);
-    contextCanvas.lineTo(canvas.width - 90, 30);
+    contextCanvas.lineTo(canvas.width - 90, 20);
     contextCanvas.moveTo(80, 0);
     contextCanvas.lineTo(40, 20);
-
     contextCanvas.stroke();
+}
+
+function drawHuman(state) {
+    switch(state) {
+        case 1:
+            contextCanvas.beginPath();
+            contextCanvas.arc(canvas.width - 90, 35, 15, 0, 2 * Math.PI, true);
+            contextCanvas.stroke();
+            break;
+        case 2:
+            contextCanvas.beginPath();
+            contextCanvas.moveTo(canvas.width - 90, 50);
+            contextCanvas.lineTo(canvas.width - 90, 100);
+            contextCanvas.stroke();
+            break;
+        case 3:
+            contextCanvas.beginPath();
+            contextCanvas.moveTo(canvas.width - 90, 50);
+            contextCanvas.lineTo(canvas.width - 90 - 20, 70);
+            contextCanvas.stroke();
+            break
+        case 4:
+            contextCanvas.beginPath();
+            contextCanvas.moveTo(canvas.width - 90, 50);
+            contextCanvas.lineTo(canvas.width - 90 + 20, 70);
+            contextCanvas.stroke();
+            break;
+        case 5:
+            contextCanvas.beginPath();
+            contextCanvas.moveTo(canvas.width - 90, 100);
+            contextCanvas.lineTo(canvas.width - 90 - 20, 120);
+            contextCanvas.stroke();
+            break;
+        case 6:
+            contextCanvas.beginPath();
+            contextCanvas.moveTo(canvas.width - 90, 100);
+            contextCanvas.lineTo(canvas.width - 90 + 20, 120);
+            contextCanvas.stroke();
+            break;
+
+
+    }
 }
 
 function randomNumber(limit) {
@@ -106,6 +146,7 @@ function ltrClick(clickLetter, currentElem) {
     if (!answer.includes(clickLetter)) {
         incorrectGuesses++;
         guesses.innerHTML = incorrectGuesses + '/6';
+        drawHuman(incorrectGuesses);
         if (incorrectGuesses === incorrectGuessesEnd) {
             showModal("You lose!");
             document.removeEventListener('keydown', physicalClick);
