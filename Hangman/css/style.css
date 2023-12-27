@@ -34,7 +34,7 @@ body {
 }
 
 .hangman__content {
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,8 +42,17 @@ body {
   gap: 50px;
 }
 
+.word {
+  display: flex;
+  gap: 10px;
+}
+
 .hint {
   display: flex;
+}
+
+.falseGuesses {
+  color: red;
 }
 
 .virtualKeyboard {

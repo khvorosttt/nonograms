@@ -4,9 +4,7 @@ const gameHTML = (hint, guesses) => `
             <div class="hangman">
             </div>
             <div class="hangman__content">
-                <div class="word">
-                kjhjhg
-                </div>
+                <div class="word"></div>
                 <div class="hint">
                     <div class="hintQuestions">Hint: ${hint}</div>
                 </div>

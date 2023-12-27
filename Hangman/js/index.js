@@ -7,8 +7,11 @@ const letters = [
     'V', 'W', 'X', 'Y', 'Z'
 ];
 let numberQuestion = randomNumber(info.length);
-document.body.insertAdjacentHTML('beforeend', gameHTML(info[numberQuestion].question));
-
+let incorrectGuesses = 0;
+let question = info[numberQuestion].question;
+let answer = info[numberQuestion].answer.toUpperCase();
+document.body.insertAdjacentHTML('beforeend', gameHTML(question, incorrectGuesses));
+let word = document.querySelector('.word');
 const virtualKeyboard = document.querySelector('.virtualKeyboard');
 for (let i = 0; i < letters.length; i++) {
     virtualKeyboard.insertAdjacentHTML('beforeend',
@@ -18,4 +21,22 @@ for (let i = 0; i < letters.length; i++) {
 
 function randomNumber(limit) {
     return Math.floor(limit * Math.random());
+}
+console.log(word);
+console.log(answer);
+for (let i = 0; i < answer.length; i++) {
+    word.insertAdjacentHTML('beforeend',
+        `<span class="answerLetter">__</span>`
+    );
+}
+
+const keyboardLetters = document.querySelectorAll('.letter');
+
+
+
+
+function letterClick(event) {
+    const currentElem = event.currentTarget;
+    const clickLetter = currentElem.textContent.toUpperCase().trim();
+    if (answer.includes())
 }
