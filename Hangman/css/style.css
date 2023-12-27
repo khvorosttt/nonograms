@@ -7,3 +7,57 @@ html {
 *, *::before, *::after {
   box-sizing: inherit;
 }
+
+body {
+  margin: 0 auto;
+}
+
+.game {
+  max-width: 1200px;
+  height: 95vh;
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  border: 2px solid black;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.hangman {
+  width: 50%;
+  height: 100%;
+  background: green;
+}
+
+.hangman__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.hint {
+  display: flex;
+}
+
+.virtualKeyboard {
+  max-width: 460px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+
+}
+
+.letter {
+  width: 40px;
+  height: 40px;
+  background: purple;
+  border-radius: 5px;
+}
