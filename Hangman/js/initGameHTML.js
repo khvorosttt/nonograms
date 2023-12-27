@@ -2,6 +2,8 @@ const gameHTML = (hint, guesses) => `
     <div class="game">
         <div class="wrapper">
             <div class="hangman">
+                <canvas id="hangmanDraw"></canvas>
+                <div class="gameName">HANGMAN GAME</div>
             </div>
             <div class="hangman__content">
                 <div class="word"></div>

@@ -30,7 +30,16 @@ body {
 .hangman {
   width: 50%;
   height: 100%;
-  background: green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+#hangmanDraw {
+  width: 100%;
+  height: 65%;
 }
 
 .hangman__content {

@@ -19,6 +19,9 @@ let answerLetters;
 let keyboardLetters;
 let lengthRightLetters;
 const incorrectGuessesEnd = 6;
+let canvas;
+let contextCanvas;
+
 
 function initGame() {
     document.body.replaceChildren();
@@ -29,6 +32,10 @@ function initGame() {
     answer = info[numberQuestion].answer.toUpperCase();
     lengthRightLetters = 0;
     document.body.insertAdjacentHTML('beforeend', gameHTML(question, incorrectGuesses));
+    canvas = document.getElementById('hangmanDraw');
+    contextCanvas = canvas.getContext('2d');
+    drawHangman();
+    // context.clearRect();
     word = document.querySelector('.word');
     virtualKeyboard = document.querySelector('.virtualKeyboard');
     addVirtualKeyboard();
@@ -42,6 +49,20 @@ function initGame() {
         }, {once: true});
     });
     document.addEventListener('keydown', physicalClick);
+}
+
+function drawHangman() {
+    contextCanvas.beginPath();
+    contextCanvas.moveTo(0, canvas.height);
+    contextCanvas.lineTo(canvas.width, canvas.height);
+    contextCanvas.moveTo(40, canvas.height);
+    contextCanvas.lineTo(40, 0);
+    contextCanvas.lineTo(canvas.width - 90, 0);
+    contextCanvas.lineTo(canvas.width - 90, 30);
+    contextCanvas.moveTo(80, 0);
+    contextCanvas.lineTo(40, 20);
+
+    contextCanvas.stroke();
 }
 
 function randomNumber(limit) {
