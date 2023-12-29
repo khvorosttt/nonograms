@@ -44,26 +44,26 @@ function initGame() {
     answerLetters = document.querySelectorAll('.answerLetter');
     keyboardLetters = document.querySelectorAll('.letter');
     keyboardLetters.forEach( (item) => {
-        item.addEventListener('click', (event) => {
-            letterClick(event);
-        }, {once: true});
+        item.addEventListener('click', virtualClick, {once: true});
     });
     document.addEventListener('keydown', physicalClick);
 }
 
 function drawHangman() {
+    contextCanvas.lineWidth = 5;
     contextCanvas.moveTo(0, canvas.height);
-    contextCanvas.lineTo(canvas.width, canvas.height);
+    contextCanvas.lineTo(canvas.width - 40, canvas.height);
     contextCanvas.moveTo(40, canvas.height);
     contextCanvas.lineTo(40, 0);
     contextCanvas.lineTo(canvas.width - 90, 0);
     contextCanvas.lineTo(canvas.width - 90, 20);
-    contextCanvas.moveTo(80, 0);
+    contextCanvas.moveTo(60, 0);
     contextCanvas.lineTo(40, 20);
     contextCanvas.stroke();
 }
 
 function drawHuman(state) {
+    contextCanvas.lineWidth = 3;
     switch(state) {
         case 1:
             contextCanvas.beginPath();
@@ -73,7 +73,7 @@ function drawHuman(state) {
         case 2:
             contextCanvas.beginPath();
             contextCanvas.moveTo(canvas.width - 90, 50);
-            contextCanvas.lineTo(canvas.width - 90, 100);
+            contextCanvas.lineTo(canvas.width - 90, 90);
             contextCanvas.stroke();
             break;
         case 3:
@@ -90,18 +90,16 @@ function drawHuman(state) {
             break;
         case 5:
             contextCanvas.beginPath();
-            contextCanvas.moveTo(canvas.width - 90, 100);
-            contextCanvas.lineTo(canvas.width - 90 - 20, 120);
+            contextCanvas.moveTo(canvas.width - 90, 90);
+            contextCanvas.lineTo(canvas.width - 90 - 20, 110);
             contextCanvas.stroke();
             break;
         case 6:
             contextCanvas.beginPath();
-            contextCanvas.moveTo(canvas.width - 90, 100);
-            contextCanvas.lineTo(canvas.width - 90 + 20, 120);
+            contextCanvas.moveTo(canvas.width - 90, 90);
+            contextCanvas.lineTo(canvas.width - 90 + 20, 110);
             contextCanvas.stroke();
             break;
-
-
     }
 }
 
@@ -123,6 +121,10 @@ function hideLetters() {
             `<span class="answerLetter">__</span>`
         );
     }
+}
+
+const virtualClick = function(event) {
+    letterClick(event);
 }
 
 const physicalClick = function(event) {
@@ -149,7 +151,6 @@ function ltrClick(clickLetter, currentElem) {
         drawHuman(incorrectGuesses);
         if (incorrectGuesses === incorrectGuessesEnd) {
             showModal("You lose!");
-            document.removeEventListener('keydown', physicalClick);
         }
     } else {
         for (let i = 0; i < answer.length; i++) {
@@ -160,7 +161,6 @@ function ltrClick(clickLetter, currentElem) {
         }
         if (lengthRightLetters === answer.length) {
             showModal("You won!");
-            document.removeEventListener('keydown', physicalClick);
         }
     }
     currentElem.classList.add('letterClicked');
@@ -168,6 +168,10 @@ function ltrClick(clickLetter, currentElem) {
 }
 
 function showModal(message) {
+    document.removeEventListener('keydown', physicalClick);
+    keyboardLetters.forEach( (item) => {
+        item.removeEventListener('click', virtualClick, {once: true});
+    });
     document.body.insertAdjacentHTML('beforeend',
         modal(message,answer)
     );
