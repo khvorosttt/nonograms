@@ -139,6 +139,16 @@ const physicalClick = function(event) {
             if(!clickedLetters.includes(key)) {
                 ltrClick(key, keyboardLetters[letters.indexOf(key)]);
             }
+        } else {
+            console.log(key);
+            document.body.insertAdjacentHTML('beforeend',
+                `<div class="suggestLanguage">
+                    Use letters from the English keyboard 
+                    layout or the virtual keyboard
+                </div>`);
+            setTimeout(function() {
+                document.querySelector('.suggestLanguage').remove()
+            }, 3000);
         }
     }
 }

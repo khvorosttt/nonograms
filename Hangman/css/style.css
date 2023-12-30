@@ -103,6 +103,22 @@ body {
   opacity: 0.6;
 }
 
+.suggestLanguage {
+  width: 250px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(29, 126, 7, 0.8);
+  border-radius: 10px;
+  position: fixed;
+  color: white;
+  bottom: 0;
+  right: 0;
+  margin: 50px;
+  padding: 15px;
+}
+
 .no-scroll {
   overflow: hidden;
 }
