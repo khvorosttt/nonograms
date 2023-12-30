@@ -21,6 +21,7 @@ let lengthRightLetters;
 const incorrectGuessesEnd = 6;
 let canvas;
 let contextCanvas;
+let modal__background;
 
 
 function initGame() {
@@ -48,6 +49,9 @@ function initGame() {
         item.addEventListener('click', virtualClick, {once: true});
     });
     document.addEventListener('keydown', physicalClick);
+    document.body.insertAdjacentHTML('beforeend',
+        modal(answer)
+    );
 }
 
 function drawHangman() {
@@ -80,25 +84,25 @@ function drawHuman(state) {
         case 3:
             contextCanvas.beginPath();
             contextCanvas.moveTo(canvas.width - 80, 70);
-            contextCanvas.lineTo(canvas.width - 80 - 20, 100);
+            contextCanvas.lineTo(canvas.width - 80 - 20, 110);
             contextCanvas.stroke();
             break
         case 4:
             contextCanvas.beginPath();
             contextCanvas.moveTo(canvas.width - 80, 70);
-            contextCanvas.lineTo(canvas.width - 80 + 20, 100);
+            contextCanvas.lineTo(canvas.width - 80 + 20, 110);
             contextCanvas.stroke();
             break;
         case 5:
             contextCanvas.beginPath();
             contextCanvas.moveTo(canvas.width - 80, 150);
-            contextCanvas.lineTo(canvas.width - 80 - 20, 180);
+            contextCanvas.lineTo(canvas.width - 80 - 20, 190);
             contextCanvas.stroke();
             break;
         case 6:
             contextCanvas.beginPath();
             contextCanvas.moveTo(canvas.width - 80, 150);
-            contextCanvas.lineTo(canvas.width - 80 + 20, 180);
+            contextCanvas.lineTo(canvas.width - 80 + 20, 190);
             contextCanvas.stroke();
             break;
     }
@@ -173,11 +177,18 @@ function showModal(message) {
     keyboardLetters.forEach( (item) => {
         item.removeEventListener('click', virtualClick, {once: true});
     });
-    document.body.insertAdjacentHTML('beforeend',
-        modal(message,answer)
-    );
+    document.querySelector('.message').innerHTML = message;
+    modal__background = document.querySelector('.modal__background');
+    modal__background.classList.add('modal-active');
+    document.body.classList.add('no-scroll');
     let againButton = document.querySelector('.playAgain');
-    againButton.addEventListener('click', initGame, {once:true});
+    againButton.addEventListener('click', PlayAgain, {once:true});
+}
+
+function PlayAgain() {
+    modal__background.classList.remove('modal-active');
+    document.body.classList.remove('no-scroll');
+    initGame();
 }
 
 window.addEventListener('load', initGame);
