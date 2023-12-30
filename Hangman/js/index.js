@@ -34,6 +34,7 @@ function initGame() {
     document.body.insertAdjacentHTML('beforeend', gameHTML(question, incorrectGuesses));
     canvas = document.getElementById('hangmanDraw');
     contextCanvas = canvas.getContext('2d');
+    canvas.height = canvas.width;
     contextCanvas.clearRect(0, 0, canvas.width, canvas.height);
     drawHangman();
     word = document.querySelector('.word');
@@ -50,15 +51,15 @@ function initGame() {
 }
 
 function drawHangman() {
-    contextCanvas.lineWidth = 5;
-    contextCanvas.moveTo(0, canvas.height);
-    contextCanvas.lineTo(canvas.width - 40, canvas.height);
-    contextCanvas.moveTo(40, canvas.height);
-    contextCanvas.lineTo(40, 0);
-    contextCanvas.lineTo(canvas.width - 90, 0);
-    contextCanvas.lineTo(canvas.width - 90, 20);
-    contextCanvas.moveTo(60, 0);
-    contextCanvas.lineTo(40, 20);
+    contextCanvas.lineWidth = 4;
+    contextCanvas.moveTo(20, canvas.height - 5);
+    contextCanvas.lineTo(canvas.width - 20, canvas.height - 5);
+    contextCanvas.moveTo(40, canvas.height - 5);
+    contextCanvas.lineTo(40, 5);
+    contextCanvas.lineTo(canvas.width - 80, 5);
+    contextCanvas.lineTo(canvas.width - 80, 20);
+    contextCanvas.moveTo(60, 5);
+    contextCanvas.lineTo(40, 25);
     contextCanvas.stroke();
 }
 
@@ -67,37 +68,37 @@ function drawHuman(state) {
     switch(state) {
         case 1:
             contextCanvas.beginPath();
-            contextCanvas.arc(canvas.width - 90, 35, 15, 0, 2 * Math.PI, true);
+            contextCanvas.arc(canvas.width - 80, 45, 25, 0, 2 * Math.PI, true);
             contextCanvas.stroke();
             break;
         case 2:
             contextCanvas.beginPath();
-            contextCanvas.moveTo(canvas.width - 90, 50);
-            contextCanvas.lineTo(canvas.width - 90, 90);
+            contextCanvas.moveTo(canvas.width - 80, 70);
+            contextCanvas.lineTo(canvas.width - 80, 150);
             contextCanvas.stroke();
             break;
         case 3:
             contextCanvas.beginPath();
-            contextCanvas.moveTo(canvas.width - 90, 50);
-            contextCanvas.lineTo(canvas.width - 90 - 20, 70);
+            contextCanvas.moveTo(canvas.width - 80, 70);
+            contextCanvas.lineTo(canvas.width - 80 - 20, 100);
             contextCanvas.stroke();
             break
         case 4:
             contextCanvas.beginPath();
-            contextCanvas.moveTo(canvas.width - 90, 50);
-            contextCanvas.lineTo(canvas.width - 90 + 20, 70);
+            contextCanvas.moveTo(canvas.width - 80, 70);
+            contextCanvas.lineTo(canvas.width - 80 + 20, 100);
             contextCanvas.stroke();
             break;
         case 5:
             contextCanvas.beginPath();
-            contextCanvas.moveTo(canvas.width - 90, 90);
-            contextCanvas.lineTo(canvas.width - 90 - 20, 110);
+            contextCanvas.moveTo(canvas.width - 80, 150);
+            contextCanvas.lineTo(canvas.width - 80 - 20, 180);
             contextCanvas.stroke();
             break;
         case 6:
             contextCanvas.beginPath();
-            contextCanvas.moveTo(canvas.width - 90, 90);
-            contextCanvas.lineTo(canvas.width - 90 + 20, 110);
+            contextCanvas.moveTo(canvas.width - 80, 150);
+            contextCanvas.lineTo(canvas.width - 80 + 20, 180);
             contextCanvas.stroke();
             break;
     }
