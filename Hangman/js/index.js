@@ -8,7 +8,7 @@ const letters = [
     'V', 'W', 'X', 'Y', 'Z'
 ];
 let clickedLetters;
-let numberQuestion;
+let numberQuestion = -1;
 let incorrectGuesses;
 let question;
 let answer;
@@ -27,10 +27,15 @@ let modal__background;
 function initGame() {
     document.body.replaceChildren();
     clickedLetters = [];
-    numberQuestion = randomNumber(info.length);
+    let temp = randomNumber(info.length);
+    while(numberQuestion === temp) {
+        temp = randomNumber(info.length);
+    }
+    numberQuestion = temp;
     incorrectGuesses = 0;
     question = info[numberQuestion].question;
     answer = info[numberQuestion].answer.toUpperCase();
+    console.log(answer);
     lengthRightLetters = 0;
     document.body.insertAdjacentHTML('beforeend', gameHTML(question, incorrectGuesses));
     canvas = document.getElementById('hangmanDraw');
@@ -140,7 +145,6 @@ const physicalClick = function(event) {
                 ltrClick(key, keyboardLetters[letters.indexOf(key)]);
             }
         } else {
-            console.log(key);
             document.body.insertAdjacentHTML('beforeend',
                 `<div class="suggestLanguage">
                     Use letters from the English keyboard 
