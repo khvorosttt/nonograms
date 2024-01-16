@@ -160,7 +160,9 @@ const physicalClick = function(event) {
 function letterClick(event) {
     const currentElem = event.currentTarget;
     const clickLetter = currentElem.textContent.toUpperCase().trim();
-    ltrClick(clickLetter, currentElem);
+    if(!clickedLetters.includes(clickLetter)) {
+        ltrClick(clickLetter, currentElem);
+    }
 }
 
 function ltrClick(clickLetter, currentElem) {
