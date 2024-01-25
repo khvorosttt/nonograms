@@ -29,3 +29,19 @@ td {
 .fill {
     background-color: black;
 }
+
+.cross_line-one,
+.cross_line-two {
+    display: block;
+    border: 2px solid black;
+    width: calc(sqrt(2)*100%);
+    background: black;
+}
+
+.cross_line-one {
+    transform: rotate(45deg) translateX(-10px) translateY(10px);
+}
+
+.cross_line-two {
+    transform: rotate(-45deg) translateX(-10px) translateY(-10px);
+}

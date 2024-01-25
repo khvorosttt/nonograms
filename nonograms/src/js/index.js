@@ -120,4 +120,15 @@ function leftClick(event) {
 
 function rightClick(event) {
     event.preventDefault();
+    const currentElem = event.currentTarget;
+    currentElem.classList.toggle('cross');
+    if (currentElem.classList.contains('cross')) {
+        currentElem.innerHTML = `
+            <span class="cross_line-one"></span>
+            <span class="cross_line-two"></span>
+        `;
+    } else {
+        currentElem.replaceChildren();
+    }
+    console.log('kjhgf');
 }
