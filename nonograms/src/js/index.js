@@ -141,5 +141,17 @@ function rightClick(event) {
 }
 
 function compareArray(firstArray, secondArray) {
-    return JSON.stringify(firstArray) === JSON.stringify(secondArray);
+    if (firstArray.length !== secondArray.length ||
+        firstArray[0].length !== secondArray[0].length) {
+            return false;
+        }
+    for (let i = 0; i < firstArray.length; i++) {
+        for (let j = 0; j < firstArray[0].length; j++) {
+            if (firstArray[i][j] !== secondArray[i][j] &&
+                firstArray[i][j] !== 0 && secondArray[i][j] !== 2) {
+                    return false;
+                }
+        }
+    }
+    return true;
 }
