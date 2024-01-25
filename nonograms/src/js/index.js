@@ -96,6 +96,11 @@ function initGame() {
 }
 
 initGame();
+const stopwatchMinutes = document.querySelector('.minutes');
+const stopwatchSeconds = document.querySelector('.seconds');
+let minutes = 0;
+let seconds = 0;
+let start = false;
 
 const cells = document.querySelectorAll(".game_cell");
 
@@ -105,6 +110,7 @@ cells.forEach((cell) => {
 });
 
 function leftClick(event) {
+    if (!start) startStopwatch();
     const currentElem = event.currentTarget;
     currentElem.classList.toggle('fill');
     let index = currentElem.getAttribute("data-index");
@@ -123,6 +129,7 @@ function leftClick(event) {
 
 function rightClick(event) {
     event.preventDefault();
+    if (!start) startStopwatch();
     const currentElem = event.currentTarget;
     currentElem.classList.toggle('cross');
     let index = currentElem.getAttribute("data-index");
@@ -154,4 +161,26 @@ function compareArray(firstArray, secondArray) {
         }
     }
     return true;
+}
+
+function startStopwatch() {
+    setInterval(stopwatch, 1000);
+}
+
+function stopwatch() {
+    seconds++;
+    if (seconds > 59) {
+        seconds = 0;
+        minutes++;
+    }
+    timeToStopwatch(stopwatchSeconds, seconds);
+    timeToStopwatch(stopwatchMinutes, minutes);
+}
+
+function timeToStopwatch(item, value) {
+    if (value < 10) {
+        item.innerHTML = `0${value}`;
+    } else {
+        item.innerHTML = value;
+    }
 }

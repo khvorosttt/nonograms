@@ -16,6 +16,9 @@ function startGame() {
                     Nonograms
                 </div>
                 <div class="game__time">
+                    <span class="minutes">00</span>
+                    :
+                    <span class="seconds">00</span>
                 </div>
                 <div class="game__grid">
                 </div>
