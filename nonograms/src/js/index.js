@@ -115,6 +115,9 @@ function leftClick(event) {
     } else if (gameArray[row][column] === 1) {
         gameArray[row][column] = 0;
     }
+    if (compareArray(solvedArray, gameArray)) {
+        console.log("win");
+    }
     console.log(gameArray);
 }
 
@@ -122,13 +125,21 @@ function rightClick(event) {
     event.preventDefault();
     const currentElem = event.currentTarget;
     currentElem.classList.toggle('cross');
+    let index = currentElem.getAttribute("data-index");
+    let row = Math.floor(index / size);
+    let column = index % size;
     if (currentElem.classList.contains('cross')) {
         currentElem.innerHTML = `
             <span class="cross_line-one"></span>
             <span class="cross_line-two"></span>
         `;
+        gameArray[row][column] = 2;
     } else {
         currentElem.replaceChildren();
+        gameArray[row][column] = 0;
     }
-    console.log('kjhgf');
+}
+
+function compareArray(firstArray, secondArray) {
+    return JSON.stringify(firstArray) === JSON.stringify(secondArray);
 }
