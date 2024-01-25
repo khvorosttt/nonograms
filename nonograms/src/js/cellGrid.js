@@ -20,8 +20,15 @@ function cellGrid(verticalHint, gorizontalHint, size) {
             let td = document.createElement("td");
             td.className = "verticalHint_cell";
             td.append(verticalHint[i][j] ? 
-                verticalHint[i][j] : '');
+                verticalHint[i][j] : ''
+            );
+            if (j % 5 === 4) {
+                td.classList.add('right_border');
+            }
             tr.append(td);
+        }
+        if (i % 5 === 4) {
+            tr.classList.add('bottom-border');
         }
         tbody.append(tr);
     }
@@ -39,7 +46,13 @@ function cellGrid(verticalHint, gorizontalHint, size) {
             let td = document.createElement("td");
             td.className = "game_cell";
             td.setAttribute("data-index", i * size + j);
+            if (j % 5 === 4) {
+                td.classList.add('right_border');
+            }
             tr.append(td);
+        }
+        if (i % 5 === 4) {
+            tr.classList.add('bottom_border');
         }
         tbody.append(tr);
     }

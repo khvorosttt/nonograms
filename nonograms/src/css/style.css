@@ -16,18 +16,30 @@
 
 .game_board {
     background-color: white;
-    border: 2px solid black;
+    border: 4px solid black;
     border-collapse: collapse;
 }
 
-td {
+.game_cell,
+.verticalHint_cell,
+.gorizontalHint_cell {
     width: 60px;
     height: 60px;
     border: 2px solid black;
     text-align: center;
 }
 
+.empty_cell {
+    border: none;
+}
 
+.right_border {
+    border-right: 4px solid black;
+}
+
+.bottom_border {
+    border-bottom: 4px solid black;
+}
 
 
 .fill {
