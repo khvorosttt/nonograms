@@ -104,12 +104,9 @@ let minutes = 0;
 let seconds = 0;
 let start = false;
 
-const cells = document.querySelectorAll(".game_cell");
+let cells = document.querySelectorAll(".game_cell");
 
-cells.forEach((cell) => {
-    cell.addEventListener('click', (event) => leftClick(event));
-    cell.addEventListener('contextmenu', (event) => rightClick(event));
-});
+addEventToCells();
 
 function leftClick(event) {
     if (!start) startStopwatch();
@@ -122,6 +119,9 @@ function leftClick(event) {
         gameArray[row][column] = 1;
     } else if (gameArray[row][column] === 1) {
         gameArray[row][column] = 0;
+    }
+    if (currentElem.classList.contains('cross')) {
+        currentElem.replaceChildren();
     }
     if (compareArray(solvedArray, gameArray)) {
         console.log("win");
@@ -191,7 +191,16 @@ function timeToStopwatch(item, value) {
 const resetGameButton = document.querySelector('.buttons__reset-game');
 resetGameButton.addEventListener('click', resetGame);
 
+function addEventToCells(){
+    cells.forEach((cell) => {
+        cell.addEventListener('click', (event) => leftClick(event));
+        cell.addEventListener('contextmenu', (event) => rightClick(event));
+    });
+}
+
 function resetGame() {
     gameArray = Array(size).fill(0).map(x => Array(size).fill(0));
     cellGrid(verticalHint, gorizontalHint, gameArray);
+    cells = document.querySelectorAll(".game_cell");
+    addEventToCells();
 }
