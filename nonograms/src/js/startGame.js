@@ -1,6 +1,6 @@
 function startGame() {
     return `
-        <div class="game">
+        <div class="game dark">
             <div class="wrapper">
                 <header class="header">
                 </header>
