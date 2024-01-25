@@ -4,11 +4,11 @@ function startGame() {
             <div class="wrapper">
                 <header class="header">
                 </header>
-                <div class="game__buttons top-buttons">
-                    <button class="top-buttons__again-last-game">
+                <div class="game__buttons buttons">
+                    <button class="buttons__again-last-game">
                         Again last game
                     </button>
-                    <button class="top-buttons__records">
+                    <button class="buttons__records">
                         Records
                     </button>
                 </div>
@@ -22,14 +22,14 @@ function startGame() {
                 </div>
                 <div class="game__grid">
                 </div>
-                <div class="game__buttons bottom-buttons">
-                    <button class="bottom-buttons__reset-game">
+                <div class="game__buttons buttons">
+                    <button class="buttons__reset-game">
                         Reset game
                     </button>
-                    <button class="bottom-buttons__choose-game">
+                    <button class="buttons__choose-game">
                         Choose game
                     </button>
-                    <button class="bottom-buttons__save-game">
+                    <button class="buttons__save-game">
                         Save game
                     </button>
                 </div>

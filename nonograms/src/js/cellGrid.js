@@ -1,4 +1,5 @@
-function cellGrid(verticalHint, gorizontalHint, size) {
+function cellGrid(verticalHint, gorizontalHint, gameArray) {
+    const size = gameArray.length;
     const grid = document.querySelector(".game__grid");
     grid.replaceChildren();
     grid.innerHTML = `
@@ -25,10 +26,16 @@ function cellGrid(verticalHint, gorizontalHint, size) {
             if (j % 5 === 4) {
                 td.classList.add('right_border');
             }
+            if (j === 0) {
+                td.classList.add('left_border');
+            }
             tr.append(td);
         }
         if (i % 5 === 4) {
-            tr.classList.add('bottom-border');
+            tr.classList.add('bottom_border');
+        }
+        if (i === 0) {
+            tr.classList.add('top_border');
         }
         tbody.append(tr);
     }
@@ -49,10 +56,25 @@ function cellGrid(verticalHint, gorizontalHint, size) {
             if (j % 5 === 4) {
                 td.classList.add('right_border');
             }
+            if (j === 0) {
+                td.classList.add('left_border');
+            }
+            if (gameArray[i][j] === 1) {
+                td.classList.add('fill');
+            } else if (gameArray[i][j] === 2) {
+                td.classList.add('cross');
+                td.append(`
+                    <span class="cross_line-one"></span>
+                    <span class="cross_line-two"></span>
+                `);
+            }
             tr.append(td);
         }
         if (i % 5 === 4) {
             tr.classList.add('bottom_border');
+        }
+        if (i === 0) {
+            tr.classList.add('top_border');
         }
         tbody.append(tr);
     }

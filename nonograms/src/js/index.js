@@ -2,20 +2,19 @@ import { startGame } from "./startGame";
 import { cellGrid } from "./cellGrid";
 import '../css/normalize.css';
 import '../css/style.css';
+import info from '../data/puzzle.json' assert { type: "json" };
 
-let solvedArray = [
-    [0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 1, 0, 0, 0],
-    [0, 1, 0, 1, 1],
-    [1, 1, 1, 1, 0]
-]
-let size = 5;
-let gameArray = Array(5).fill(0).map(x => Array(5).fill(0));
-let verticalHint = Array(3).fill(0).map(x => Array(5).fill(0));
+let level = "middle";
+let puzzles = info.filter(item => item.level === level);
+let solvedArray = puzzles[randomNumber(puzzles.length)].puzzle;
+console.log(solvedArray);
+let size = solvedArray.length;
+console.log(size);
+let gameArray = Array(size).fill(0).map(x => Array(size).fill(0));
+let verticalHint = Array(Math.ceil(size / 2)).fill(0).map(x => Array(size).fill(0));
 setVerticalHint();
 console.log(verticalHint);
-let gorizontalHint = Array(5).fill(0).map(x => Array(3).fill(0));
+let gorizontalHint = Array(size).fill(0).map(x => Array(Math.ceil(size / 2)).fill(0));
 setGorizontalHint();
 console.log(gorizontalHint);
 
@@ -88,11 +87,14 @@ function setGorizontalHint() {
     }
 }
 
+function randomNumber(number) {
+    return Math.floor(Math.random()*number);
+}
 
 
 function initGame() {
     document.body.innerHTML = startGame();
-    cellGrid(verticalHint, gorizontalHint, 5);
+    cellGrid(verticalHint, gorizontalHint, gameArray);
 }
 
 initGame();
@@ -164,6 +166,7 @@ function compareArray(firstArray, secondArray) {
 }
 
 function startStopwatch() {
+    start = true;
     setInterval(stopwatch, 1000);
 }
 
@@ -183,4 +186,12 @@ function timeToStopwatch(item, value) {
     } else {
         item.innerHTML = value;
     }
+}
+
+const resetGameButton = document.querySelector('.buttons__reset-game');
+resetGameButton.addEventListener('click', resetGame);
+
+function resetGame() {
+    gameArray = Array(size).fill(0).map(x => Array(size).fill(0));
+    cellGrid(verticalHint, gorizontalHint, gameArray);
 }
