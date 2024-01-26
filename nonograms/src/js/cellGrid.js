@@ -63,10 +63,6 @@ function cellGrid(verticalHint, gorizontalHint, gameArray) {
                 td.classList.add('fill');
             } else if (gameArray[i][j] === 2) {
                 td.classList.add('cross');
-                td.append(`
-                    <span class="cross_line-one"></span>
-                    <span class="cross_line-two"></span>
-                `);
             }
             tr.append(td);
         }
@@ -77,6 +73,16 @@ function cellGrid(verticalHint, gorizontalHint, gameArray) {
             tr.classList.add('top_border');
         }
         tbody.append(tr);
+    }
+    if (size === 10) {
+        document.querySelectorAll('td').forEach((cell) => {
+            cell.setAttribute('style', 'width: 30px; height: 30px;');
+        })
+    }
+    if (size === 15) {
+        document.querySelectorAll('td').forEach((cell) => {
+            cell.setAttribute('style', 'width: 15px; height: 15px;');
+        })
     }
 }
 

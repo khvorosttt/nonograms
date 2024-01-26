@@ -4,7 +4,7 @@ import '../css/normalize.css';
 import '../css/style.css';
 import info from '../data/puzzle.json' assert { type: "json" };
 
-let level = "middle";
+let level = "low";
 let puzzles = info.filter(item => item.level === level);
 let solvedArray = puzzles[randomNumber(puzzles.length)].puzzle;
 console.log(solvedArray);
@@ -81,6 +81,7 @@ function setGorizontalHint() {
             for (let i = 0; i < gorizontalHint.length; i++) {
                 gorizontalHint[i].shift();
             }
+            j--;
         } else {
             break;
         }
@@ -121,7 +122,8 @@ function leftClick(event) {
         gameArray[row][column] = 0;
     }
     if (currentElem.classList.contains('cross')) {
-        currentElem.replaceChildren();
+        currentElem.classList.remove('cross');
+        gameArray[row][column] = 1;
     }
     if (compareArray(solvedArray, gameArray)) {
         console.log("win");
@@ -138,13 +140,9 @@ function rightClick(event) {
     let row = Math.floor(index / size);
     let column = index % size;
     if (currentElem.classList.contains('cross')) {
-        currentElem.innerHTML = `
-            <span class="cross_line-one"></span>
-            <span class="cross_line-two"></span>
-        `;
         gameArray[row][column] = 2;
+        currentElem.classList.remove('fill');
     } else {
-        currentElem.replaceChildren();
         gameArray[row][column] = 0;
     }
 }

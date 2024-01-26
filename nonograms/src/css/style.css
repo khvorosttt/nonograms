@@ -54,6 +54,11 @@
     background-color: black;
 }
 
+.cross {
+    background-image: linear-gradient(to bottom right,  transparent calc(50% - 2px), black, transparent calc(50% + 2px)),
+        linear-gradient(to top right,  transparent calc(50% - 2px), black, transparent calc(50% + 2px));
+}
+
 .cross_line-one,
 .cross_line-two {
     display: block;
@@ -63,9 +68,9 @@
 }
 
 .cross_line-one {
-    transform: rotate(45deg) translateX(-10px) translateY(10px);
+    transform: rotate(45deg) translateX(calc(-0.1*100%)) translateY(calc(180%));
 }
 
 .cross_line-two {
-    transform: rotate(-45deg) translateX(-10px) translateY(-10px);
+    transform: rotate(-45deg) translateX(calc(-0.1*100%)) translateY(calc(-180%));
 }
