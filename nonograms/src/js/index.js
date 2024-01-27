@@ -11,6 +11,7 @@ let puzzles = info.filter(item => item.level === level);
 let currentPuzzle = puzzles[randomNumber(puzzles.length)];
 let solvedArray = currentPuzzle.puzzle;
 let size = solvedArray.length;
+let name = currentPuzzle.name;
 let gameArray = Array(size).fill(0).map(x => Array(size).fill(0));
 let verticalHint = setVerticalHint();
 let gorizontalHint = setGorizontalHint();
@@ -29,6 +30,7 @@ let stopwatchSeconds;
 let resetGameButton;
 let chooseLevelButton;
 let saveGameButton;
+let againButton;
 let timer;
 let dataSave = false;
 
@@ -143,6 +145,10 @@ function initGame() {
     chooseLevelButton = document.querySelector('.buttons__choose-game');
     chooseLevelButton.addEventListener('click', chooseLevelEvent);
     saveGameButton = document.querySelector('.buttons__save-game');
+    saveGameButton.addEventListener('click', saveGame);
+    againButton = document.querySelector('.buttons__again-last-game');
+    againButton.addEventListener('click', againGame);
+    againButton = document.querySelector('.buttons__save-game');
     modalPuzzles = document.querySelector('.puzzles_wrapper');
     closeLevelButton = document.querySelector('.close_chooseLevel');
     closeLevelButton.addEventListener('click', closeModalLevel);
@@ -294,6 +300,7 @@ function changeSelectPuzzle(event) {
     verticalHint = setVerticalHint();
     gorizontalHint = setGorizontalHint();
     level = currentPuzzle[0].level;
+    name = currentPuzzle[0].name;
     gameArray = Array(size).fill(0).map(x => Array(size).fill(0));
     seconds = 0;
     minutes = 0;
@@ -319,4 +326,32 @@ function copyArray(array) {
         copyArray[i] = array[i].slice();
     }
     return copyArray;
+}
+
+function saveGame() {
+    dataSave = true;
+    localStorage.setItem('name', currentPuzzle.name);
+    localStorage.setItem('level', currentPuzzle.level);
+    localStorage.setItem('gameState', JSON.stringify(gameArray));
+    localStorage.setItem('seconds', seconds);
+    localStorage.setItem('minutes', minutes);
+}
+
+function againGame() {
+    if (dataSave) {
+        name = localStorage.name;
+        console.log(name);
+        level = localStorage.level;
+        currentPuzzle = info.filter((item) => {
+            return item.name === name && item.level === level;
+        });
+        console.log(currentPuzzle);
+        solvedArray = currentPuzzle[0].puzzle;
+        verticalHint = setVerticalHint();
+        gorizontalHint = setGorizontalHint();
+        gameArray = JSON.parse(localStorage.gameState);
+        seconds = localStorage.getItem('seconds');
+        minutes = localStorage.getItem('minutes');
+        initGameBoard();
+    }
 }
