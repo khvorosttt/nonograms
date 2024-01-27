@@ -11,6 +11,9 @@ function startGame() {
                     <button class="buttons__records">
                         Records
                     </button>
+                    <button class="buttons__show-solution">
+                        Solution
+                    </button>
                 </div>
                 <div class="game__name">
                     Nonograms

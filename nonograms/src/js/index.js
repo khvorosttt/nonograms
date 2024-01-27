@@ -31,8 +31,10 @@ let resetGameButton;
 let chooseLevelButton;
 let saveGameButton;
 let againButton;
+let showSolutionButton;
 let timer;
 let dataSave = false;
+let shownSolution;
 
 function setVerticalHint() {
     const array = Array(Math.ceil(size / 2)).fill(0).map(x => Array(size).fill(0)); 
@@ -149,6 +151,8 @@ function initGame() {
     againButton = document.querySelector('.buttons__again-last-game');
     againButton.addEventListener('click', againGame);
     againButton = document.querySelector('.buttons__save-game');
+    showSolutionButton = document.querySelector('.buttons__show-solution');
+    showSolutionButton.addEventListener('click', showSolution);
     modalPuzzles = document.querySelector('.puzzles_wrapper');
     closeLevelButton = document.querySelector('.close_chooseLevel');
     closeLevelButton.addEventListener('click', closeModalLevel);
@@ -160,7 +164,8 @@ function initGame() {
 }
 
 function initGameBoard() {
-    start = false;
+    //start = false;
+    shownSolution = false;
     cellGrid(verticalHint, gorizontalHint, gameArray);
     cells = document.querySelectorAll(".game_cell");
     addEventToCells();
@@ -178,7 +183,6 @@ initGame();
 
 
 function leftClick(event) {
-    console.log('start');
     if (!start) startStopwatch();
     const currentElem = event.currentTarget;
     currentElem.classList.toggle('fill');
@@ -200,7 +204,6 @@ function leftClick(event) {
 }
 
 function rightClick(event) {
-    console.log('start');
     event.preventDefault();
     if (!start) startStopwatch();
     const currentElem = event.currentTarget;
@@ -329,24 +332,28 @@ function copyArray(array) {
 }
 
 function saveGame() {
-    dataSave = true;
-    localStorage.setItem('name', currentPuzzle.name);
-    localStorage.setItem('level', currentPuzzle.level);
-    localStorage.setItem('gameState', JSON.stringify(gameArray));
-    localStorage.setItem('seconds', seconds);
-    localStorage.setItem('minutes', minutes);
+    if (!shownSolution) {
+        dataSave = true;
+        localStorage.clear();
+        localStorage.setItem('name', currentPuzzle.name);
+        localStorage.setItem('level', currentPuzzle.level);
+        localStorage.setItem('gameState', JSON.stringify(gameArray));
+        localStorage.setItem('seconds', seconds);
+        localStorage.setItem('minutes', minutes);
+        console.log(localStorage);
+    }
 }
 
 function againGame() {
-    if (dataSave) {
+    if (dataSave && !showSolution) {
         name = localStorage.name;
         console.log(name);
         level = localStorage.level;
         currentPuzzle = info.filter((item) => {
             return item.name === name && item.level === level;
-        });
+        })[0];
         console.log(currentPuzzle);
-        solvedArray = currentPuzzle[0].puzzle;
+        solvedArray = currentPuzzle.puzzle;
         verticalHint = setVerticalHint();
         gorizontalHint = setGorizontalHint();
         gameArray = JSON.parse(localStorage.gameState);
@@ -354,4 +361,10 @@ function againGame() {
         minutes = localStorage.getItem('minutes');
         initGameBoard();
     }
+}
+
+function showSolution() {
+    gameArray = copyArray(solvedArray);
+    initGameBoard();
+    shownSolution = true;
 }
