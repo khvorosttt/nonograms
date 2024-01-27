@@ -3,28 +3,43 @@ import { cellGrid } from "./cellGrid";
 import '../css/normalize.css';
 import '../css/style.css';
 import info from '../data/puzzle.json' assert { type: "json" };
+import { chooseLevel } from "./modalChooseLevel";
+import { selectPuzzle } from "./selectPuzzle";
 
 let level = "low";
 let puzzles = info.filter(item => item.level === level);
-let solvedArray = puzzles[randomNumber(puzzles.length)].puzzle;
-console.log(solvedArray);
+let currentPuzzle = puzzles[randomNumber(puzzles.length)];
+let solvedArray = currentPuzzle.puzzle;
 let size = solvedArray.length;
-console.log(size);
 let gameArray = Array(size).fill(0).map(x => Array(size).fill(0));
-let verticalHint = Array(Math.ceil(size / 2)).fill(0).map(x => Array(size).fill(0));
-setVerticalHint();
-console.log(verticalHint);
-let gorizontalHint = Array(size).fill(0).map(x => Array(Math.ceil(size / 2)).fill(0));
-setGorizontalHint();
-console.log(gorizontalHint);
+let verticalHint = setVerticalHint();
+let gorizontalHint = setGorizontalHint();
+let modal__backgroundLevel;
+let modal__backgroundPuzzles;
+let level_containers;
+let modalPuzzles;
+let closeLevelButton;
+let returnLevelButton;
+let cells;
+let minutes = 0;
+let seconds = 0;
+let start = false;
+let stopwatchMinutes;
+let stopwatchSeconds;
+let resetGameButton;
+let chooseLevelButton;
+let saveGameButton;
+let timer;
+let dataSave = false;
 
 function setVerticalHint() {
+    const array = Array(Math.ceil(size / 2)).fill(0).map(x => Array(size).fill(0)); 
     for (let j = 0; j < solvedArray[0].length; j++) {
         let one = 0;
-        let hint = verticalHint.length - 1;
+        let hint = array.length - 1;
         for (let i = solvedArray.length - 1; i >= 0; i--) {
             if (one && solvedArray[i][j] === 0) {
-                verticalHint[hint][j] = one;
+                array[hint][j] = one;
                 one = 0;
                 hint--;
             }
@@ -33,32 +48,34 @@ function setVerticalHint() {
             }
         }
         if (one) {
-            verticalHint[hint][j] = one;
+            array[hint][j] = one;
             one = 0;
             hint--;
         }
     }
-    for (let i = 0; i < verticalHint.length; i++) {
+    for (let i = 0; i < array.length; i++) {
         let sum = 0;
-        for (let j = 0; j < verticalHint[0].length; j++) {
-            sum += verticalHint[i][j];
+        for (let j = 0; j < array[0].length; j++) {
+            sum += array[i][j];
         }
         if (sum === 0) {
-            verticalHint.shift();
+            array.shift();
             i--;
         } else {
             break;
         }
     }
+    return array;
 }
 
 function setGorizontalHint() {
+    const array = Array(size).fill(0).map(x => Array(Math.ceil(size / 2)).fill(0));
     for (let i = 0; i < solvedArray.length; i++) {
         let one = 0;
-        let hint = gorizontalHint[0].length - 1;
+        let hint = array[0].length - 1;
         for (let j = solvedArray[0].length - 1; j >=0; j--) {
             if (one && solvedArray[i][j] === 0) {
-                gorizontalHint[i][hint] = one;
+                array[i][hint] = one;
                 one = 0;
                 hint--;
             }
@@ -67,25 +84,26 @@ function setGorizontalHint() {
             }
         }
         if (one) {
-            gorizontalHint[i][hint] = one;
+            array[i][hint] = one;
             one = 0;
             hint--;
         }
     }
-    for (let j = 0; j < gorizontalHint[0].length; j++) {
+    for (let j = 0; j < array[0].length; j++) {
         let sum = 0;
-        for (let i = 0; i < gorizontalHint.length; i++) {
-            sum += gorizontalHint[i][j];
+        for (let i = 0; i < array.length; i++) {
+            sum += array[i][j];
         }
         if (sum === 0) {
-            for (let i = 0; i < gorizontalHint.length; i++) {
-                gorizontalHint[i].shift();
+            for (let i = 0; i < array.length; i++) {
+                array[i].shift();
             }
             j--;
         } else {
             break;
         }
     }
+    return array;
 }
 
 function randomNumber(number) {
@@ -95,21 +113,66 @@ function randomNumber(number) {
 
 function initGame() {
     document.body.innerHTML = startGame();
+    initGameBoard();
+    stopwatchMinutes = document.querySelector('.minutes');
+    stopwatchSeconds = document.querySelector('.seconds');
+    document.body.insertAdjacentHTML('beforeend',
+        chooseLevel()
+    );
+    document.body.insertAdjacentHTML('beforeend',
+        selectPuzzle(size)
+    );
+    modal__backgroundLevel = document.querySelector('.modal__backgroundLevel');
+    modal__backgroundPuzzles = document.querySelector('.modal__backgroundPuzzles');
+    modal__backgroundLevel.addEventListener('click', (event) => {
+        if(event.target === modal__backgroundLevel) {
+            closeModalLevel();
+        }
+    });
+    modal__backgroundPuzzles.addEventListener('click', (event) => {
+        if(event.target === modal__backgroundPuzzles) {
+            closeModalPuzzles();
+        }
+    });
+    level_containers = document.querySelectorAll('.level_container');
+    level_containers.forEach((level_container) => {
+        level_container.addEventListener('click', (event) => chooseLevelContainer(event));
+    });
+    resetGameButton = document.querySelector('.buttons__reset-game');
+    resetGameButton.addEventListener('click', resetGame);
+    chooseLevelButton = document.querySelector('.buttons__choose-game');
+    chooseLevelButton.addEventListener('click', chooseLevelEvent);
+    saveGameButton = document.querySelector('.buttons__save-game');
+    modalPuzzles = document.querySelector('.puzzles_wrapper');
+    closeLevelButton = document.querySelector('.close_chooseLevel');
+    closeLevelButton.addEventListener('click', closeModalLevel);
+    returnLevelButton = document.querySelector('.return_chooseLevel');
+    returnLevelButton.addEventListener('click', () => {
+        closeModalPuzzles();
+        chooseLevelEvent();
+    })
+}
+
+function initGameBoard() {
+    start = false;
     cellGrid(verticalHint, gorizontalHint, gameArray);
+    cells = document.querySelectorAll(".game_cell");
+    addEventToCells();
+}
+
+function addEventToCells(){
+    cells.forEach((cell) => {
+        cell.addEventListener('click', (event) => leftClick(event));
+        cell.addEventListener('contextmenu', (event) => rightClick(event));
+    });
 }
 
 initGame();
-const stopwatchMinutes = document.querySelector('.minutes');
-const stopwatchSeconds = document.querySelector('.seconds');
-let minutes = 0;
-let seconds = 0;
-let start = false;
 
-let cells = document.querySelectorAll(".game_cell");
 
-addEventToCells();
 
 function leftClick(event) {
+    console.log('start');
     if (!start) startStopwatch();
     const currentElem = event.currentTarget;
     currentElem.classList.toggle('fill');
@@ -128,10 +191,10 @@ function leftClick(event) {
     if (compareArray(solvedArray, gameArray)) {
         console.log("win");
     }
-    console.log(gameArray);
 }
 
 function rightClick(event) {
+    console.log('start');
     event.preventDefault();
     if (!start) startStopwatch();
     const currentElem = event.currentTarget;
@@ -165,7 +228,7 @@ function compareArray(firstArray, secondArray) {
 
 function startStopwatch() {
     start = true;
-    setInterval(stopwatch, 1000);
+    timer = setInterval(stopwatch, 1000);
 }
 
 function stopwatch() {
@@ -186,19 +249,74 @@ function timeToStopwatch(item, value) {
     }
 }
 
-const resetGameButton = document.querySelector('.buttons__reset-game');
-resetGameButton.addEventListener('click', resetGame);
-
-function addEventToCells(){
-    cells.forEach((cell) => {
-        cell.addEventListener('click', (event) => leftClick(event));
-        cell.addEventListener('contextmenu', (event) => rightClick(event));
-    });
-}
-
 function resetGame() {
     gameArray = Array(size).fill(0).map(x => Array(size).fill(0));
     cellGrid(verticalHint, gorizontalHint, gameArray);
     cells = document.querySelectorAll(".game_cell");
     addEventToCells();
+}
+
+function chooseLevelEvent() {
+    modal__backgroundLevel.classList.add('modal-active');
+    //document.body.classList.add('no-scroll');
+}
+
+function chooseLevelContainer(event) {
+    let currentElem = event.currentTarget;
+    let tempLevel = currentElem.getAttribute('data-level');
+    showPuzzles(tempLevel);
+}
+
+function showPuzzles(level) {
+    closeModalLevel();
+    modal__backgroundPuzzles.classList.add('puzzles-active');
+    modalPuzzles.replaceChildren();
+    let tempPuzzles = info.filter((item) => item.level === level);
+    for (let i = 0; i < tempPuzzles.length; i++) {
+        let div = document.createElement("div");
+        div.className = "puzzleName";
+        div.innerHTML = tempPuzzles[i].name;
+        modalPuzzles.append(div);
+    }
+    const namePuzzles = document.querySelectorAll('.puzzleName');
+    namePuzzles.forEach((namePuzzle) => {
+        namePuzzle.addEventListener('click', (event) => changeSelectPuzzle(event));
+    });
+    
+
+}
+
+function changeSelectPuzzle(event) {
+    let currentElem = event.currentTarget;
+    currentPuzzle = info.filter(item => item.name === currentElem.textContent);
+    solvedArray = currentPuzzle[0].puzzle;
+    size = solvedArray.length;
+    verticalHint = setVerticalHint();
+    gorizontalHint = setGorizontalHint();
+    level = currentPuzzle[0].level;
+    gameArray = Array(size).fill(0).map(x => Array(size).fill(0));
+    seconds = 0;
+    minutes = 0;
+    timeToStopwatch(stopwatchSeconds, seconds);
+    timeToStopwatch(stopwatchMinutes, minutes);
+    start = false;
+    clearInterval(timer);
+    initGameBoard();
+    closeModalPuzzles();
+}
+
+function closeModalLevel() {
+    modal__backgroundLevel.classList.remove('modal-active');
+}
+
+function closeModalPuzzles() {
+    modal__backgroundPuzzles.classList.remove('puzzles-active');
+}
+
+function copyArray(array) {
+    const copyArray = [];
+    for (let i = 0; i < array.length; i++) {
+        copyArray[i] = array[i].slice();
+    }
+    return copyArray;
 }
