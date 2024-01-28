@@ -5,6 +5,8 @@ import '../css/style.css';
 import info from '../data/puzzle.json' assert { type: "json" };
 import { chooseLevel } from "./modalChooseLevel";
 import { selectPuzzle } from "./selectPuzzle";
+import { modalHTML } from "./modal";
+import { top } from "./top";
 
 let level = "low";
 let puzzles = info.filter(item => item.level === level);
@@ -15,6 +17,7 @@ let name = currentPuzzle.name;
 let gameArray = Array(size).fill(0).map(x => Array(size).fill(0));
 let verticalHint = setVerticalHint();
 let gorizontalHint = setGorizontalHint();
+let modal__background;
 let modal__backgroundLevel;
 let modal__backgroundPuzzles;
 let level_containers;
@@ -32,9 +35,12 @@ let chooseLevelButton;
 let saveGameButton;
 let againButton;
 let showSolutionButton;
+let topButton;
+let closeModalButton;
 let timer;
 let dataSave = false;
 let shownSolution;
+let win = false;
 
 function setVerticalHint() {
     const array = Array(Math.ceil(size / 2)).fill(0).map(x => Array(size).fill(0)); 
@@ -126,8 +132,17 @@ function initGame() {
     document.body.insertAdjacentHTML('beforeend',
         selectPuzzle(size)
     );
+    document.body.insertAdjacentHTML('beforeend',
+        modalHTML()
+    );
+    modal__background = document.querySelector('.modal__background');
     modal__backgroundLevel = document.querySelector('.modal__backgroundLevel');
     modal__backgroundPuzzles = document.querySelector('.modal__backgroundPuzzles');
+    modal__background.addEventListener('click', (event) => {
+        if(event.target === modal__background) {
+            closeModal();
+        }
+    });
     modal__backgroundLevel.addEventListener('click', (event) => {
         if(event.target === modal__backgroundLevel) {
             closeModalLevel();
@@ -153,9 +168,13 @@ function initGame() {
     againButton = document.querySelector('.buttons__save-game');
     showSolutionButton = document.querySelector('.buttons__show-solution');
     showSolutionButton.addEventListener('click', showSolution);
+    topButton = document.querySelector('.buttons__records');
+    topButton.addEventListener('click', topAction);
     modalPuzzles = document.querySelector('.puzzles_wrapper');
     closeLevelButton = document.querySelector('.close_chooseLevel');
     closeLevelButton.addEventListener('click', closeModalLevel);
+    closeModalButton = document.querySelector('.modal__close_button');
+    closeModalButton.addEventListener('click', closeModal);
     returnLevelButton = document.querySelector('.return_chooseLevel');
     returnLevelButton.addEventListener('click', () => {
         closeModalPuzzles();
@@ -164,7 +183,6 @@ function initGame() {
 }
 
 function initGameBoard() {
-    //start = false;
     shownSolution = false;
     cellGrid(verticalHint, gorizontalHint, gameArray);
     cells = document.querySelectorAll(".game_cell");
@@ -173,9 +191,20 @@ function initGameBoard() {
 
 function addEventToCells(){
     cells.forEach((cell) => {
-        cell.addEventListener('click', (event) => leftClick(event));
-        cell.addEventListener('contextmenu', (event) => rightClick(event));
+        cell.addEventListener('click', leftClick);
+        cell.addEventListener('contextmenu', rightClick);
+        cell.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+        });
     });
+}
+
+function removeEventToCells(){
+    cells.forEach((cell) => {
+        cell.removeEventListener('click', leftClick);
+        cell.removeEventListener('contextmenu', rightClick);
+    });
+    console.log('okjihugytf');
 }
 
 initGame();
@@ -199,7 +228,7 @@ function leftClick(event) {
         gameArray[row][column] = 1;
     }
     if (compareArray(solvedArray, gameArray)) {
-        console.log("win");
+        winAction();
     }
 }
 
@@ -296,14 +325,15 @@ function showPuzzles(level) {
 }
 
 function changeSelectPuzzle(event) {
+    win = false;
     let currentElem = event.currentTarget;
-    currentPuzzle = info.filter(item => item.name === currentElem.textContent);
-    solvedArray = currentPuzzle[0].puzzle;
+    currentPuzzle = info.filter(item => item.name === currentElem.textContent)[0];
+    solvedArray = currentPuzzle.puzzle;
     size = solvedArray.length;
     verticalHint = setVerticalHint();
     gorizontalHint = setGorizontalHint();
-    level = currentPuzzle[0].level;
-    name = currentPuzzle[0].name;
+    level = currentPuzzle.level;
+    name = currentPuzzle.name;
     gameArray = Array(size).fill(0).map(x => Array(size).fill(0));
     seconds = 0;
     minutes = 0;
@@ -332,7 +362,7 @@ function copyArray(array) {
 }
 
 function saveGame() {
-    if (!shownSolution) {
+    if (!shownSolution && !win) {
         dataSave = true;
         localStorage.clear();
         localStorage.setItem('name', currentPuzzle.name);
@@ -345,7 +375,8 @@ function saveGame() {
 }
 
 function againGame() {
-    if (dataSave && !showSolution) {
+    if (dataSave && !shownSolution) {
+        console.log('mkjnhbgvf');
         name = localStorage.name;
         console.log(name);
         level = localStorage.level;
@@ -367,4 +398,52 @@ function showSolution() {
     gameArray = copyArray(solvedArray);
     initGameBoard();
     shownSolution = true;
+    clearInterval(timer);
+}
+
+function winAction() {
+    if (!win) {
+        clearInterval(timer);
+        console.log("win");
+        let data = JSON.parse(localStorage.getItem('top'));
+        console.log(data);
+        let gameInfo = [level, name, minutes, seconds];
+        let array = [];
+        if (data) {
+            array = data;
+            if (array.length < 5) {
+                array.push(gameInfo);
+            } else {
+                array.shift();
+                array.push(gameInfo);
+            }
+        } else {
+            array.push(gameInfo);
+        }
+        localStorage.setItem('top', JSON.stringify(array));
+        removeEventToCells();
+        win = true;
+    }    
+}
+
+function topAction() {
+    console.log(modal__background);
+    modal__background.classList.add('modal-active');
+    let data = JSON.parse(localStorage.getItem('top'));
+    if (data) {
+        let topArray = data;
+        topArray = sortTop(topArray);
+        top(topArray);
+    }
+}
+
+function sortTop(array) {
+    array.sort((a, b) => {
+        return (a[2]*60 + a[3]) - (b[2]*60 +b[3]);
+    });
+    return array;
+}
+
+function closeModal() {
+    modal__background.classList.remove('modal-active');
 }
