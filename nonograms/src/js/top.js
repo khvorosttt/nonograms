@@ -1,5 +1,5 @@
 function top(topArray) {
-    let modal = document.querySelector('.modal');
+    let modal = document.querySelector('.modal_wrapper');
     modal.replaceChildren();
     let wrapper = document.createElement('div');
     wrapper.className = 'top_wrapper';

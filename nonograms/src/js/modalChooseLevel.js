@@ -24,7 +24,11 @@ function chooseLevel() {
                         <h4>Playing field: 15&times15</h4>
                     </div>
                 </div>
+                
+                <div class="choose_buttons">
+                <button class="random_button">Random game</button>
                 <button class="close_chooseLevel">Close</button>
+                </div>
             </div>
         </div>
     `

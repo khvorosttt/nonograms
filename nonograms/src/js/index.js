@@ -37,6 +37,7 @@ let againButton;
 let showSolutionButton;
 let topButton;
 let closeModalButton;
+let randomButton;
 let timer;
 let dataSave = false;
 let shownSolution;
@@ -169,6 +170,8 @@ function initGame() {
     showSolutionButton = document.querySelector('.buttons__show-solution');
     showSolutionButton.addEventListener('click', showSolution);
     topButton = document.querySelector('.buttons__records');
+    randomButton = document.querySelector('.random_button');
+    randomButton.addEventListener('click', randomGame);
     topButton.addEventListener('click', topAction);
     modalPuzzles = document.querySelector('.puzzles_wrapper');
     closeLevelButton = document.querySelector('.close_chooseLevel');
@@ -446,4 +449,20 @@ function sortTop(array) {
 
 function closeModal() {
     modal__background.classList.remove('modal-active');
+}
+
+function randomGame() {
+    let number = randomNumber(info.length);
+    currentPuzzle = info[number];
+    level = currentPuzzle.level;
+    name = currentPuzzle.name;
+    solvedArray = copyArray(currentPuzzle.puzzle);
+    size = solvedArray.length;
+    gameArray = Array(size).fill(0).map(x => Array(size).fill(0));
+    verticalHint = setVerticalHint();
+    gorizontalHint = setGorizontalHint();
+    start = false;
+    clearInterval(timer);
+    initGameBoard();
+    closeModalLevel();
 }
