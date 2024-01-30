@@ -7,6 +7,7 @@ import { chooseLevel } from "./modalChooseLevel";
 import { selectPuzzle } from "./selectPuzzle";
 import { modalHTML } from "./modal";
 import { top } from "./top";
+import { winModal } from "./win";
 
 let level = "low";
 let puzzles = info.filter(item => item.level === level);
@@ -42,6 +43,7 @@ let timer;
 let dataSave = false;
 let shownSolution;
 let win = false;
+let namePuzzle;
 
 function setVerticalHint() {
     const array = Array(Math.ceil(size / 2)).fill(0).map(x => Array(size).fill(0)); 
@@ -125,6 +127,8 @@ function randomNumber(number) {
 function initGame() {
     document.body.innerHTML = startGame();
     initGameBoard();
+    namePuzzle = document.querySelector('.name_puzzle');
+    namePuzzle.innerText = name;
     stopwatchMinutes = document.querySelector('.minutes');
     stopwatchSeconds = document.querySelector('.seconds');
     document.body.insertAdjacentHTML('beforeend',
@@ -345,6 +349,7 @@ function changeSelectPuzzle(event) {
     start = false;
     clearInterval(timer);
     initGameBoard();
+    namePuzzle.innerText = name;
     closeModalPuzzles();
 }
 
@@ -393,6 +398,7 @@ function againGame() {
         gameArray = JSON.parse(localStorage.gameState);
         seconds = localStorage.getItem('seconds');
         minutes = localStorage.getItem('minutes');
+        namePuzzle.innerText = name;
         initGameBoard();
     }
 }
@@ -426,6 +432,8 @@ function winAction() {
         localStorage.setItem('top', JSON.stringify(array));
         removeEventToCells();
         win = true;
+        modal__background.classList.add('modal-active');
+        winModal(name, minutes, seconds);
     }    
 }
 
@@ -462,6 +470,11 @@ function randomGame() {
     verticalHint = setVerticalHint();
     gorizontalHint = setGorizontalHint();
     start = false;
+    seconds = 0;
+    minutes = 0;
+    namePuzzle.innerText = name;
+    timeToStopwatch(stopwatchSeconds, seconds);
+    timeToStopwatch(stopwatchMinutes, minutes);
     clearInterval(timer);
     initGameBoard();
     closeModalLevel();

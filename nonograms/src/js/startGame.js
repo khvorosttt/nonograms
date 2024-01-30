@@ -16,7 +16,7 @@ function startGame() {
                     </button>
                 </div>
                 <div class="game__name">
-                    Nonograms
+                    Nonograms &laquo<span class="name_puzzle"></span>&raquo
                 </div>
                 <div class="game__time">
                     <span class="minutes">00</span>
