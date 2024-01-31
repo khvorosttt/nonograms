@@ -1,7 +1,7 @@
 [
     {
         "level": "low",
-        "name": "candle",
+        "name": "Candle",
         "puzzle": [
             [0, 1, 0, 0, 0],
             [0, 0, 0, 0, 0],
@@ -12,7 +12,7 @@
     },
     {
         "level": "low",
-        "name": "chicken",
+        "name": "Chicken",
         "puzzle": [
             [0, 1, 0, 0, 0],
             [1, 1, 0, 1, 1],
@@ -23,7 +23,7 @@
     },
     {
         "level": "low",
-        "name": "dog",
+        "name": "Dog",
         "puzzle": [
             [0, 0, 0, 1, 1],
             [1, 0, 0, 1, 1],
@@ -34,7 +34,7 @@
     },
     {
         "level": "low",
-        "name": "camel",
+        "name": "Camel",
         "puzzle": [
             [0, 1, 0, 0, 0],
             [1, 1, 1, 0, 1],
@@ -45,7 +45,7 @@
     },
     {
         "level": "low",
-        "name": "tetris",
+        "name": "Tetris",
         "puzzle": [
             [0, 0, 1, 0, 0],
             [0, 1, 1, 0, 0],
@@ -56,7 +56,7 @@
     },
     {
         "level": "low",
-        "name": "stroller",
+        "name": "Stroller",
         "puzzle": [
             [0, 1, 1, 0, 0],
             [1, 1, 0, 0, 1],
@@ -67,7 +67,7 @@
     },
     {
         "level": "low",
-        "name": "fountain",
+        "name": "Fountain",
         "puzzle": [
             [0, 1, 0, 1, 0],
             [1, 0, 1, 0, 1],
@@ -78,7 +78,7 @@
     },
     {
         "level": "low",
-        "name": "rabbit",
+        "name": "Rabbit",
         "puzzle": [
             [0, 1, 1, 0, 0],
             [0, 0, 0, 1, 1],
@@ -89,7 +89,7 @@
     },
     {
         "level": "low",
-        "name": "dinosaur",
+        "name": "Dinosaur",
         "puzzle": [
             [0, 0, 0, 1, 1],
             [0, 0, 0, 1, 0],
@@ -100,7 +100,7 @@
     },
     {
         "level": "low",
-        "name": "fan",
+        "name": "Fan",
         "puzzle": [
             [0, 1, 0, 0, 0],
             [0, 1, 0, 1, 1],
@@ -111,7 +111,7 @@
     },
     {
         "level": "middle",
-        "name": "ship",
+        "name": "Ship",
         "puzzle": [
             [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
@@ -127,7 +127,7 @@
     },
     {
         "level": "middle",
-        "name": "tap",
+        "name": "Tap",
         "puzzle": [
             [0, 0, 0, 0, 1, 1, 1, 1, 1, 0],
             [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
@@ -143,7 +143,7 @@
     },
     {
         "level": "middle",
-        "name": "camera",
+        "name": "Camera",
         "puzzle": [
             [0, 0, 0, 0, 0, 1, 1, 1, 1, 0],
             [0, 0, 0, 0, 0, 1, 0, 0, 1, 0],
@@ -159,7 +159,7 @@
     },
     {
         "level": "middle",
-        "name": "helicopter",
+        "name": "Helicopter",
         "puzzle": [
             [1, 1, 1, 0, 1, 1, 1, 0, 0, 0],
             [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
@@ -175,7 +175,7 @@
     },
     {
         "level": "middle",
-        "name": "skater",
+        "name": "Skater",
         "puzzle": [
             [1, 1, 0, 0, 1, 1, 1, 1, 0, 0],
             [1, 1, 0, 1, 1, 0, 0, 1, 0, 0],
@@ -191,7 +191,7 @@
     },
     {
         "level": "middle",
-        "name": "fish",
+        "name": "Fish",
         "puzzle": [
             [0, 0, 0, 0, 0, 1, 1, 1, 0, 0],
             [0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
@@ -207,7 +207,7 @@
     },
     {
         "level": "high",
-        "name": "young woman",
+        "name": "Young woman",
         "puzzle": [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0],
@@ -228,7 +228,7 @@
     },
     {
         "level": "high",
-        "name": "ram",
+        "name": "Ram",
         "puzzle": [
             [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -249,7 +249,7 @@
     },
     {
         "level": "high",
-        "name": "kettle",
+        "name": "Kettle",
         "puzzle": [
             [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
@@ -270,7 +270,7 @@
     },
     {
         "level": "high",
-        "name": "dinosaur",
+        "name": "Dinosaur",
         "puzzle": [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0],
             [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
@@ -291,7 +291,7 @@
     },
     {
         "level": "high",
-        "name": "brigantine",
+        "name": "Brigantine",
         "puzzle": [
             [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1],

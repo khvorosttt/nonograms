@@ -19,9 +19,9 @@ function top(topArray) {
     for (let i = 0; i< topArray.length; i++) {
         let tr = document.createElement('tr');
         tr.innerHTML = `
-            <th>${topArray[i][1]}</th>
-            <th>${topArray[i][0]}</th>
-            <th>${topArray[i][2]}:${topArray[i][3]}</th>
+            <td>${topArray[i][1]}</td>
+            <td>${topArray[i][0]}</td>
+            <td>${topArray[i][2]}:${topArray[i][3]}</td>
         `;
         tbody.append(tr);
     }

@@ -26,8 +26,8 @@ function chooseLevel() {
                 </div>
                 
                 <div class="choose_buttons">
-                <button class="random_button">Random game</button>
-                <button class="close_chooseLevel">Close</button>
+                <button class="btns random_button">Random game</button>
+                <button class="btns close_chooseLevel">Close</button>
                 </div>
             </div>
         </div>

@@ -8,6 +8,10 @@ import { selectPuzzle } from "./selectPuzzle";
 import { modalHTML } from "./modal";
 import { top } from "./top";
 import { winModal } from "./win";
+import fillSound from "../sounds/fill.mp3";
+import hideSound from "../sounds/hide.mp3";
+import crossSound from "../sounds/cross.mp3";
+import winSound from "../sounds/win-gong.ogg";
 
 let level = "low";
 let puzzles = info.filter(item => item.level === level);
@@ -40,10 +44,13 @@ let topButton;
 let closeModalButton;
 let randomButton;
 let timer;
-let dataSave = false;
 let shownSolution;
 let win = false;
 let namePuzzle;
+let fillAudio = new Audio(fillSound);
+let hideAudio = new Audio(hideSound);
+let crossAudio = new Audio(crossSound);
+let winAudio = new Audio(winSound);
 
 function setVerticalHint() {
     const array = Array(Math.ceil(size / 2)).fill(0).map(x => Array(size).fill(0)); 
@@ -211,7 +218,6 @@ function removeEventToCells(){
         cell.removeEventListener('click', leftClick);
         cell.removeEventListener('contextmenu', rightClick);
     });
-    console.log('okjihugytf');
 }
 
 initGame();
@@ -221,6 +227,13 @@ initGame();
 function leftClick(event) {
     if (!start) startStopwatch();
     const currentElem = event.currentTarget;
+    if (currentElem.classList.contains('fill')) {
+        hideAudio.currentTime = 0;
+        hideAudio.play();
+    } else {
+        fillAudio.currentTime = 0;
+        fillAudio.play();
+    }
     currentElem.classList.toggle('fill');
     let index = currentElem.getAttribute("data-index");
     let row = Math.floor(index / size);
@@ -243,6 +256,13 @@ function rightClick(event) {
     event.preventDefault();
     if (!start) startStopwatch();
     const currentElem = event.currentTarget;
+    if (currentElem.classList.contains('cross')) {
+        hideAudio.currentTime = 0;
+        hideAudio.play();
+    } else {
+        crossAudio.currentTime = 0;
+        crossAudio.play();
+    }
     currentElem.classList.toggle('cross');
     let index = currentElem.getAttribute("data-index");
     let row = Math.floor(index / size);
@@ -312,11 +332,11 @@ function chooseLevelContainer(event) {
     showPuzzles(tempLevel);
 }
 
-function showPuzzles(level) {
+function showPuzzles(tempLevel) {
     closeModalLevel();
     modal__backgroundPuzzles.classList.add('puzzles-active');
     modalPuzzles.replaceChildren();
-    let tempPuzzles = info.filter((item) => item.level === level);
+    let tempPuzzles = info.filter((item) => item.level === tempLevel);
     for (let i = 0; i < tempPuzzles.length; i++) {
         let div = document.createElement("div");
         div.className = "puzzleName";
@@ -325,16 +345,16 @@ function showPuzzles(level) {
     }
     const namePuzzles = document.querySelectorAll('.puzzleName');
     namePuzzles.forEach((namePuzzle) => {
-        namePuzzle.addEventListener('click', (event) => changeSelectPuzzle(event));
+        namePuzzle.addEventListener('click', (event) => changeSelectPuzzle(event, tempLevel));
     });
     
 
 }
 
-function changeSelectPuzzle(event) {
+function changeSelectPuzzle(event, tempLevel) {
     win = false;
     let currentElem = event.currentTarget;
-    currentPuzzle = info.filter(item => item.name === currentElem.textContent)[0];
+    currentPuzzle = info.filter(item => item.name === currentElem.textContent && item.level === tempLevel)[0];
     solvedArray = currentPuzzle.puzzle;
     size = solvedArray.length;
     verticalHint = setVerticalHint();
@@ -371,27 +391,24 @@ function copyArray(array) {
 
 function saveGame() {
     if (!shownSolution && !win) {
-        dataSave = true;
-        localStorage.clear();
+        localStorage.setItem('save', true);
         localStorage.setItem('name', currentPuzzle.name);
         localStorage.setItem('level', currentPuzzle.level);
         localStorage.setItem('gameState', JSON.stringify(gameArray));
         localStorage.setItem('seconds', seconds);
         localStorage.setItem('minutes', minutes);
-        console.log(localStorage);
     }
 }
 
 function againGame() {
-    if (dataSave && !shownSolution) {
-        console.log('mkjnhbgvf');
+    let dataSave = localStorage.getItem('save');
+    if (dataSave) {
+        win = false;
         name = localStorage.name;
-        console.log(name);
         level = localStorage.level;
         currentPuzzle = info.filter((item) => {
             return item.name === name && item.level === level;
         })[0];
-        console.log(currentPuzzle);
         solvedArray = currentPuzzle.puzzle;
         verticalHint = setVerticalHint();
         gorizontalHint = setGorizontalHint();
@@ -399,6 +416,8 @@ function againGame() {
         seconds = localStorage.getItem('seconds');
         minutes = localStorage.getItem('minutes');
         namePuzzle.innerText = name;
+        clearInterval(timer);
+        startStopwatch();
         initGameBoard();
     }
 }
@@ -413,9 +432,7 @@ function showSolution() {
 function winAction() {
     if (!win) {
         clearInterval(timer);
-        console.log("win");
         let data = JSON.parse(localStorage.getItem('top'));
-        console.log(data);
         let gameInfo = [level, name, minutes, seconds];
         let array = [];
         if (data) {
@@ -430,15 +447,15 @@ function winAction() {
             array.push(gameInfo);
         }
         localStorage.setItem('top', JSON.stringify(array));
-        removeEventToCells();
         win = true;
         modal__background.classList.add('modal-active');
         winModal(name, minutes, seconds);
+        winAudio.currentTime = 0;
+        winAudio.play();
     }    
 }
 
 function topAction() {
-    console.log(modal__background);
     modal__background.classList.add('modal-active');
     let data = JSON.parse(localStorage.getItem('top'));
     if (data) {
@@ -457,9 +474,11 @@ function sortTop(array) {
 
 function closeModal() {
     modal__background.classList.remove('modal-active');
+    winAudio.pause();
 }
 
 function randomGame() {
+    win = false;
     let number = randomNumber(info.length);
     currentPuzzle = info[number];
     level = currentPuzzle.level;
@@ -473,9 +492,9 @@ function randomGame() {
     seconds = 0;
     minutes = 0;
     namePuzzle.innerText = name;
+    closeModalLevel();
     timeToStopwatch(stopwatchSeconds, seconds);
     timeToStopwatch(stopwatchMinutes, minutes);
     clearInterval(timer);
     initGameBoard();
-    closeModalLevel();
 }

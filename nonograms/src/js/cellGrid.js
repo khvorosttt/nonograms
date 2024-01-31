@@ -81,7 +81,7 @@ function cellGrid(verticalHint, gorizontalHint, gameArray) {
     }
     if (size === 15) {
         document.querySelectorAll('td').forEach((cell) => {
-            cell.setAttribute('style', 'width: 15px; height: 15px;');
+            cell.setAttribute('style', 'width: 20px; height: 20px;');
         })
     }
 }
