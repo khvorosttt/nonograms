@@ -51,6 +51,8 @@ let fillAudio = new Audio(fillSound);
 let hideAudio = new Audio(hideSound);
 let crossAudio = new Audio(crossSound);
 let winAudio = new Audio(winSound);
+let themeButton;
+let game;
 
 function setVerticalHint() {
     const array = Array(Math.ceil(size / 2)).fill(0).map(x => Array(size).fill(0)); 
@@ -134,17 +136,18 @@ function randomNumber(number) {
 function initGame() {
     document.body.innerHTML = startGame();
     initGameBoard();
+    game = document.querySelector('.game');
     namePuzzle = document.querySelector('.name_puzzle');
     namePuzzle.innerText = name;
     stopwatchMinutes = document.querySelector('.minutes');
     stopwatchSeconds = document.querySelector('.seconds');
-    document.body.insertAdjacentHTML('beforeend',
+    game.insertAdjacentHTML('beforeend',
         chooseLevel()
     );
-    document.body.insertAdjacentHTML('beforeend',
+    game.insertAdjacentHTML('beforeend',
         selectPuzzle(size)
     );
-    document.body.insertAdjacentHTML('beforeend',
+    game.insertAdjacentHTML('beforeend',
         modalHTML()
     );
     modal__background = document.querySelector('.modal__background');
@@ -169,6 +172,8 @@ function initGame() {
     level_containers.forEach((level_container) => {
         level_container.addEventListener('click', (event) => chooseLevelContainer(event));
     });
+    themeButton = document.querySelector('.theme_button');
+    themeButton.addEventListener('click', changeTheme);
     resetGameButton = document.querySelector('.buttons__reset-game');
     resetGameButton.addEventListener('click', resetGame);
     chooseLevelButton = document.querySelector('.buttons__choose-game');
@@ -222,6 +227,18 @@ function removeEventToCells(){
 
 initGame();
 
+
+function changeTheme(event) {
+    let currentElem = event.currentTarget;
+    currentElem.classList.toggle('theme-dark');
+    if (currentElem.classList.contains('theme-dark')) {
+        game.classList.remove('light');
+        game.classList.add('dark');
+    } else {
+        game.classList.remove('dark');
+        game.classList.add('light');
+    }
+}
 
 
 function leftClick(event) {

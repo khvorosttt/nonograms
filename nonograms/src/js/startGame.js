@@ -2,8 +2,6 @@ function startGame() {
     return `
         <div class="game light">
             <div class="wrapper">
-                <header class="header">
-                </header>
                 <div class="game__buttons buttons">
                     <button class="btns buttons__again-last-game">
                         Again last game
@@ -15,9 +13,12 @@ function startGame() {
                         Solution
                     </button>
                 </div>
-                <h1 class="game__name">
-                    Nonograms &laquo<span class="name_puzzle"></span>&raquo
-                </h1>
+                <div class="title_space">
+                    <h1 class="game__name">
+                        Nonograms &laquo<span class="name_puzzle"></span>&raquo
+                    </h1>
+                    <div class="theme_button"></div>
+                </div>
                 <div class="game__time">
                     <span class="minutes">00</span>
                     :

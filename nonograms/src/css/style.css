@@ -22,6 +22,14 @@ body {
   margin: 0 auto;
 }
 
+.dark {
+  background-image: url(../img/dark-background.jpg);
+}
+
+.light {
+  background-image: url(../img/light-background.jpg);
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -46,10 +54,22 @@ body {
   cursor: pointer;
 }
 
+.dark .btns {
+  background: #b7608b;
+  color: #f9ecef;
+  border: 2px solid #f9ecef;
+}
+
 .btns:hover {
   background: #6c1f28;
   color: #F899D5;
   border: 2px solid #F899D5;
+}
+
+.dark .btns:hover {
+  background: #f9ecef;
+  color: #b7608b;
+  border: 2px solid #b7608b;
 }
 
 .choose_buttons {
@@ -57,18 +77,16 @@ body {
   gap: 30px
 }
 
-.dark {
-  background-image: url(../img/dark-background.jpg);
-}
-
-.light {
-  background-image: url(../img/light-background.jpg);
-}
-
 .empty_cell,
 .verticalHint_cell,
 .gorizontalHint_cell {
   background-color: #cc729e;
+}
+
+.dark .empty_cell,
+.dark .verticalHint_cell,
+.dark .gorizontalHint_cell {
+  background-color: #7c4c8c;
 }
 
 .game__name {
@@ -79,6 +97,11 @@ body {
   padding: 5px;
 }
 
+.dark .game__name {
+  color: #f9ecef;
+  background-color: #421c54;
+}
+
 .game__time {
   font-size: 28px;
   background-color: #F899D5;
@@ -87,10 +110,22 @@ body {
   padding: 5px;
 }
 
+.dark .game__time {
+  background-color: #421c54;
+  border: 1px solid #f9ecef;
+  color: #f9ecef;
+}
+
 .game_board {
   background-color: white;
   border: 4px solid black;
   border-collapse: collapse;
+}
+
+.dark .game_board {
+  background-color: black;
+  border: 4px solid #b7608b;
+  color: #f9ecef;
 }
 
 .game_cell,
@@ -100,6 +135,12 @@ body {
   height: 60px;
   border: 2px solid black;
   text-align: center;
+}
+
+.dark .game_cell,
+.dark .verticalHint_cell,
+.dark .gorizontalHint_cell {
+  border: 2px solid #b7608b;
 }
 
 .game_cell {
@@ -114,25 +155,50 @@ body {
   border-right: 4px solid black;
 }
 
+.dark .right_border {
+  border-right: 4px solid #b7608b;
+}
+
 .left_border {
   border-left: 4px solid black;
+}
+
+.dark .left_border {
+  border-left: 4px solid #b7608b;
 }
 
 .bottom_border {
   border-bottom: 4px solid black;
 }
 
+.dark .bottom_border {
+  border-bottom: 4px solid #b7608b;
+}
+
 .top_border {
   border-top: 4px solid black;
+}
+
+.dark .top_border {
+  border-top: 4px solid #b7608b;
 }
 
 .fill {
   background-color: black;
 }
 
+.dark .fill {
+  background-color: #b7608b;
+}
+
 .cross {
   background-image: linear-gradient(to bottom right,  transparent calc(50% - 2px), black, transparent calc(50% + 2px)),
       linear-gradient(to top right,  transparent calc(50% - 2px), black, transparent calc(50% + 2px));
+}
+
+.dark .cross {
+  background-image: linear-gradient(to bottom right,  transparent calc(50% - 2px), #b7608b, transparent calc(50% + 2px)),
+      linear-gradient(to top right,  transparent calc(50% - 2px), #b7608b, transparent calc(50% + 2px));
 }
 
 .no-scroll {
@@ -155,6 +221,12 @@ body {
   background:  rgb(108, 31, 40, 0.5);
   opacity: 0;
   transition: 0.5s;
+}
+
+.dark .modal__background,
+.dark .modal__backgroundLevel,
+.dark .modal__backgroundPuzzles {
+  background:  rgb(66, 28, 84, 0.5);
 }
   
 .modal-active,
@@ -181,6 +253,12 @@ body {
   gap: 30px;
 }
 
+.dark .modal,
+.dark .modalChooseLevel {
+  background: #7c4c8c;
+  color: #f9ecef;
+}
+
 .modal {
   width: 40%;
 }
@@ -201,6 +279,11 @@ body {
   transition-delay: 1s;
   transition: opacity 0.3s;
   gap: 30px;
+}
+
+.dark .selectPuzzle_wrapper {
+  background: #7c4c8c;
+  color: #f9ecef;
 }
 
 .modal-active .modal,
@@ -230,10 +313,20 @@ body {
   border: 2px solid #6c1f28;
 }
 
+.dark .level_container {
+  border: 2px solid #f9ecef;
+}
+
 .level_container:hover {
   border: 2px solid #cc729e;
   background: #6c1f28;
   color: #cc729e;
+}
+
+.dark .level_container:hover {
+  border: 2px solid #7c4c8c;
+  background: #f9ecef;
+  color: #7c4c8c;
 }
 
 .level_img,
@@ -254,6 +347,11 @@ body {
   border-collapse: collapse;
 }
 
+.dark .top_table {
+  background-color: black;
+  border: 2px solid #b7608b;
+}
+
 .top_table th {
   background-color: #F899D5;
   border: 2px solid black;
@@ -262,11 +360,20 @@ body {
   font-size: 26px;
 }
 
+.dark .top_table th {
+  background-color: #b7608b;
+  border: 2px solid #f9ecef;
+}
+
 .top_table td {
   border: 2px solid black;
   border-collapse: collapse;
   padding: 5px;
   font-size: 20px;
+}
+
+.dark .top_table td {
+  border: 2px solid #f9ecef;
 }
 
 .win_wrapper {
@@ -315,7 +422,52 @@ body {
   background: #6c1f28;
 }
 
+.dark .puzzleName::after {
+  background: #f9ecef;
+}
+
 .puzzleName:hover::after {
   opacity: 1;
   width: 100%;
+}
+
+.title_space {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.theme_button {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  border-radius: 25px;
+  background: black;
+  border: 2px solid #F899D5;
+  transition-duration: 0.5s;
+}
+
+.theme_button::after {
+  position: absolute;
+  content: "";
+  width: 36px;
+  height: 36px;
+  border-radius: 50px;
+  background: #F899D5;
+  top: 2px;
+  left: 2px;
+  z-index: 2;
+  transition-duration: 0.5s;
+}
+
+.theme_button.theme-dark {
+  background: #F899D5;
+  border: 2px solid black;
+}
+
+.theme-dark::after {
+  left: 40px;
+  background: black;
 }
