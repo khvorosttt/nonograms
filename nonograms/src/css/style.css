@@ -131,8 +131,8 @@ body {
 .game_cell,
 .verticalHint_cell,
 .gorizontalHint_cell {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border: 2px solid black;
   text-align: center;
 }
@@ -200,10 +200,6 @@ body {
   background-image: linear-gradient(to bottom right,  transparent calc(50% - 2px), #b7608b, transparent calc(50% + 2px)),
       linear-gradient(to top right,  transparent calc(50% - 2px), #b7608b, transparent calc(50% + 2px));
 }
-
-.no-scroll {
-  overflow: hidden;
-  }
   
 .modal__background,
 .modal__backgroundLevel,
@@ -260,7 +256,7 @@ body {
 }
 
 .modal {
-  width: 40%;
+  width: 30%;
 }
 
 .selectPuzzle_wrapper {
@@ -332,8 +328,8 @@ body {
 .level_img,
 .win_img {
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   background-size: cover;
   overflow: hidden;
   align-items: center;
@@ -470,4 +466,46 @@ body {
 .theme-dark::after {
   left: 40px;
   background: black;
+}
+
+@media screen and (max-width: 600px) {
+  .btns {
+    font-size: 16px;
+  }
+
+  .game__name {
+    font-size: 24px;
+  }
+  
+  .game__time {
+    font-size: 20px;
+  }
+
+  .level_container {
+    gap: 5px;
+    border-radius: 25px;
+    text-align: center;
+  }
+
+  .top_table th {
+    font-size: 20px;
+  }
+  
+  .top_table td {
+    font-size: 16px;
+  }
+
+  .theme_button {
+    width: 60px;
+    height: 30px;
+  }
+  
+  .theme_button::after {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .theme-dark::after {
+    left: 30px;
+  }
 }
