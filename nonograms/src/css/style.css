@@ -468,6 +468,15 @@ body {
   background: black;
 }
 
+.time_sounds_wrapper {
+  display: flex;
+  gap: 15px;
+}
+
+.sounds.btns:hover {
+  background: #cc729e;
+}
+
 @media screen and (max-width: 600px) {
   .btns {
     font-size: 16px;

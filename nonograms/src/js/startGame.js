@@ -19,10 +19,13 @@ function startGame() {
                     </h1>
                     <div class="theme_button"></div>
                 </div>
-                <div class="game__time">
-                    <span class="minutes">00</span>
-                    :
-                    <span class="seconds">00</span>
+                <div class="time_sounds_wrapper">
+                    <div class="game__time">
+                        <span class="minutes">00</span>
+                        :
+                        <span class="seconds">00</span>
+                    </div>
+                    <button class="sounds btns">🔕</button>
                 </div>
                 <div class="game__grid">
                 </div>

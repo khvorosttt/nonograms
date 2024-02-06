@@ -51,9 +51,17 @@ let fillAudio = new Audio(fillSound);
 let hideAudio = new Audio(hideSound);
 let crossAudio = new Audio(crossSound);
 let winAudio = new Audio(winSound);
+mute(true);
 let themeButton;
 let game;
+let soundsButton;
 
+function mute(value) {
+    fillAudio.muted = value;
+    hideAudio.muted = value;
+    crossAudio.muted = value;
+    winAudio.muted = value;
+}
 function setVerticalHint() {
     const array = Array(Math.ceil(size / 2)).fill(0).map(x => Array(size).fill(0)); 
     for (let j = 0; j < solvedArray[0].length; j++) {
@@ -141,6 +149,8 @@ function initGame() {
     namePuzzle.innerText = name;
     stopwatchMinutes = document.querySelector('.minutes');
     stopwatchSeconds = document.querySelector('.seconds');
+    soundsButton = document.querySelector('.sounds');
+    soundsButton.addEventListener('click', onSounds);
     game.insertAdjacentHTML('beforeend',
         chooseLevel()
     );
@@ -206,6 +216,17 @@ function initGameBoard() {
     cellGrid(verticalHint, gorizontalHint, gameArray);
     cells = document.querySelectorAll(".game_cell");
     addEventToCells();
+}
+
+function onSounds() {
+    soundsButton.classList.toggle('on');
+    if (!soundsButton.classList.contains('on')) {
+        soundsButton.innerText = '🔕';
+        mute(true);
+    } else {
+        soundsButton.innerText = '🎵';
+        mute(false);
+    }
 }
 
 function addEventToCells(){
