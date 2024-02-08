@@ -448,6 +448,7 @@ function againGame() {
             return item.name === name && item.level === level;
         })[0];
         solvedArray = currentPuzzle.puzzle;
+        size = solvedArray.length;
         verticalHint = setVerticalHint();
         gorizontalHint = setGorizontalHint();
         gameArray = JSON.parse(localStorage.gameState);
